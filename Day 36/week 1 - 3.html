@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Android Dev — Complete Notes Week 1–3</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0e;--bg2:#131316;--bg3:#1a1a1f;--bg4:#202026;--border:#2c2c35;--border2:#3a3a45;--text:#e2e0ec;--muted:#6e6c82;--muted2:#9997b0;--teal:#2dd4bf;--purple:#a78bfa;--amber:#fbbf24;--coral:#f87171;--blue:#60a5fa;--green:#4ade80;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.7}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:255px;min-width:255px;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:0 0 40px;flex-shrink:0}
+.sidebar-header{padding:22px 18px 14px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.course-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--teal);margin-bottom:6px;text-transform:uppercase;display:block}
+.sidebar-header h2{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+.exam-tag{display:inline-block;margin-top:8px;background:#f8717120;border:1px solid var(--coral);color:var(--coral);font-size:11px;font-family:var(--mono);padding:3px 10px;border-radius:4px}
+.nav-week-label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;padding:14px 18px 5px}
+.nav-item{display:block;padding:6px 18px;color:var(--muted2);font-size:12.5px;text-decoration:none;border-left:2px solid transparent;transition:all .15s;cursor:pointer}
+.nav-item:hover{color:var(--text);background:var(--bg3)}
+.nav-item.active{color:var(--teal);border-left-color:var(--teal);background:#2dd4bf0a}
+.nav-item .num{font-family:var(--mono);font-size:10px;color:var(--muted);margin-right:5px}
+.nav-hot{color:var(--coral);font-size:10px;margin-left:3px}
+.main{flex:1;min-width:0;padding:0 0 80px}
+.section{border-bottom:1px solid var(--border);padding:44px 48px;max-width:860px}
+@media(max-width:900px){.sidebar{display:none}.section{padding:28px 18px}.mcq-wrap{padding:28px 18px}}
+.week-header{margin-bottom:28px}
+.week-tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:block}
+.wt-1{color:var(--teal)}.wt-2{color:var(--purple)}.wt-3{color:var(--amber)}
+.week-header h1{font-size:24px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:6px}
+.week-header .subtitle{color:var(--muted2);font-size:13px}
+.topic-flow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:18px 0 28px;padding:12px 16px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)}
+.flow-step{font-size:11px;font-weight:500;padding:4px 10px;border-radius:4px}
+.flow-arrow{color:var(--muted);font-size:13px}
+.section h2{font-size:17px;font-weight:600;color:#fff;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.section h2 .h2n{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.section h3{font-size:14px;font-weight:600;color:var(--text);margin:20px 0 8px}
+.section p{color:var(--muted2);margin-bottom:11px;font-size:14px;line-height:1.8}
+.section p strong{color:var(--text);font-weight:500}
+.connect{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:13px 17px;margin:14px 0;font-size:13px;color:var(--muted2);line-height:1.7}
+.connect .label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;display:block}
+.connect.teal{border-left:3px solid var(--teal)}.connect.teal .label{color:var(--teal)}
+.connect.purple{border-left:3px solid var(--purple)}.connect.purple .label{color:var(--purple)}
+.connect.amber{border-left:3px solid var(--amber)}.connect.amber .label{color:var(--amber)}
+.connect.coral{border-left:3px solid var(--coral)}.connect.coral .label{color:var(--coral)}
+.connect strong{color:var(--text);font-weight:500}
+.layer-stack{display:flex;flex-direction:column;gap:3px}
+.layer{display:flex;align-items:center;padding:11px 16px;border-radius:6px;font-size:13px;font-weight:500;gap:10px}
+.l-num{font-family:var(--mono);font-size:11px;opacity:.6;min-width:18px}
+.l-name{flex:1}.l-desc{font-size:11px;font-weight:400;opacity:.75}
+.l-app{background:#2dd4bf12;border:1px solid #2dd4bf40;color:var(--teal)}
+.l-fw{background:#a78bfa12;border:1px solid #a78bfa40;color:var(--purple)}
+.l-art{background:#fbbf2412;border:1px solid #fbbf2440;color:var(--amber)}
+.l-lib{background:#60a5fa12;border:1px solid #60a5fa40;color:var(--blue)}
+.l-kern{background:#f8717112;border:1px solid #f8717140;color:var(--coral)}
+.layer-arrow{text-align:center;color:var(--muted);font-size:12px;padding:1px 0}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:580px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{border-radius:8px;padding:15px;border:1px solid var(--border)}
+.comp-card .c-tag{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block}
+.comp-card h4{font-size:13px;font-weight:600;margin-bottom:5px}
+.comp-card p{font-size:12px;color:var(--muted2);margin:0;line-height:1.6}
+.cc-a{background:#2dd4bf08;border-color:#2dd4bf30}.cc-a .c-tag,.cc-a h4{color:var(--teal)}
+.cc-s{background:#a78bfa08;border-color:#a78bfa30}.cc-s .c-tag,.cc-s h4{color:var(--purple)}
+.cc-b{background:#fbbf2408;border-color:#fbbf2430}.cc-b .c-tag,.cc-b h4{color:var(--amber)}
+.cc-p{background:#60a5fa08;border-color:#60a5fa30}.cc-p .c-tag,.cc-p h4{color:var(--blue)}
+.lifecycle{display:flex;align-items:center;gap:3px;overflow-x:auto;padding:4px 0 8px;flex-wrap:nowrap}
+.lc{flex-shrink:0;padding:8px 12px;border-radius:6px;font-family:var(--mono);font-size:11px;font-weight:600;text-align:center;white-space:nowrap}
+.lc-on{background:var(--bg4);border:1px solid var(--border2);color:var(--muted2)}
+.lc-star{background:#2dd4bf15;border:2px solid var(--teal);color:var(--teal)}
+.lc-end{background:#f8717110;border:1px solid #f8717140;color:var(--coral)}
+.lc-arr{color:var(--muted);font-size:13px;flex-shrink:0}
+.lc-note{font-size:11px;color:var(--muted);margin-top:6px;font-family:var(--mono)}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:12px 0;font-family:var(--mono);font-size:12px;line-height:2;overflow-x:auto}
+.xml-tag{color:var(--blue)}.xml-req{color:var(--teal);font-weight:600}.xml-opt{color:var(--muted2)}.xml-attr{color:var(--purple)}.xml-comment{color:var(--muted);font-style:italic}.xml-hl{color:var(--amber);font-weight:600}
+.i1{padding-left:20px;display:block}.i2{padding-left:40px;display:block}
+.intent-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:540px){.intent-split{grid-template-columns:1fr}}
+.ib{border-radius:8px;padding:15px;border:1px solid var(--border)}
+.ib-e{background:#2dd4bf08;border-color:#2dd4bf30}.ib-e h4{color:var(--teal)}
+.ib-i{background:#a78bfa08;border-color:#a78bfa30}.ib-i h4{color:var(--purple)}
+.ib h4{font-size:13px;font-weight:600;margin-bottom:8px}
+.ib ul{list-style:none;padding:0}
+.ib ul li{font-size:12px;color:var(--muted2);padding:4px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.ib ul li:last-child{border-bottom:none}
+.ib ul li::before{content:'— ';color:var(--muted)}
+.attr-visual{display:flex;gap:10px;margin:12px 0;flex-wrap:wrap}
+.attr-p{background:#2dd4bf12;border:2px solid var(--teal);border-radius:8px;padding:14px 16px;text-align:center;min-width:110px}
+.attr-p .big{font-size:17px;font-weight:600;color:var(--teal);font-family:var(--mono)}
+.attr-p .sm{font-size:11px;color:var(--muted2);margin-top:3px}
+.attr-s{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;flex:1;min-width:180px}
+.attr-s .sm{font-size:10px;color:var(--muted);margin-bottom:8px;font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{background:#a78bfa15;border:1px solid #a78bfa40;color:var(--purple);font-size:11px;font-weight:500;padding:4px 11px;border-radius:20px;font-family:var(--mono)}
+.ftable{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.ftable tr{border-bottom:1px solid var(--border)}
+.ftable tr:last-child{border-bottom:none}
+.ftable td{padding:9px 10px;vertical-align:top}
+.fkey{color:var(--muted2);width:42%;font-weight:500}
+.fval{color:var(--text)}
+.fval .ans{color:var(--teal);font-weight:600}
+.exam-box{background:#f8717108;border:1px solid #f8717140;border-radius:8px;padding:14px 17px;margin:20px 0}
+.exam-box .elabel{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--coral);text-transform:uppercase;margin-bottom:8px;display:block}
+.exam-box ul{padding-left:16px}
+.exam-box ul li{font-size:13px;color:var(--muted2);padding:3px 0;line-height:1.6}
+.exam-box ul li strong{color:var(--text);font-weight:500}
+.res-flow{display:flex;flex-direction:column;align-items:center;gap:7px;padding:18px 0}
+.rf-box{width:100%;max-width:380px;padding:11px 16px;border-radius:8px;text-align:center;font-size:13px;font-weight:500}
+.rf-src{background:#a78bfa12;border:1px solid #a78bfa40;color:var(--purple)}
+.rf-info{display:flex;gap:7px;justify-content:center;width:100%;flex-wrap:wrap}
+.rf-chip{padding:8px 14px;border-radius:6px;font-size:12px;font-weight:600;font-family:var(--mono)}
+.rf-c1{background:#2dd4bf10;border:1px solid #2dd4bf40;color:var(--teal)}
+.rf-c2{background:#fbbf2410;border:1px solid #fbbf2440;color:var(--amber)}
+.rf-c3{background:#60a5fa10;border:1px solid #60a5fa40;color:var(--blue)}
+.rf-dest{display:flex;gap:7px;justify-content:center;width:100%;flex-wrap:wrap}
+.rf-d{padding:8px 13px;border-radius:6px;font-size:12px;background:var(--bg4);border:1px solid var(--border2);color:var(--muted2)}
+.rf-arrow{color:var(--muted);font-size:12px;font-family:var(--mono)}
+.rf-label{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.ver-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.ver-table th{text-align:left;padding:8px 10px;background:var(--bg4);color:var(--muted2);font-weight:500;font-family:var(--mono);font-size:10px;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.ver-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--muted2);vertical-align:top}
+.ver-table tr:last-child td{border-bottom:none}
+.ver-table .hl td{background:#2dd4bf08;color:var(--text)}
+.ver-table .hl td:first-child{border-left:2px solid var(--teal)}
+.mcq-wrap{padding:44px 48px;max-width:860px}
+.mcq-header{margin-bottom:24px}
+.mcq-header h1{font-size:22px;font-weight:600;color:#fff;margin-bottom:5px}
+.mcq-header p{font-size:13px;color:var(--muted2)}
+.mcq-controls{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.mf{background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:var(--sans);font-size:12px;padding:6px 13px;border-radius:6px;cursor:pointer;transition:all .15s}
+.mf:hover,.mf.on{background:#2dd4bf12;border-color:var(--teal);color:var(--teal)}
+.rev-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--muted2);font-family:var(--sans);font-size:12px;padding:6px 13px;border-radius:6px;cursor:pointer;margin-left:auto;transition:all .15s}
+.rev-btn:hover{border-color:var(--teal);color:var(--teal)}
+.score-line{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:14px}
+.score-line span{color:var(--teal);font-weight:600}
+.mcq-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:15px 17px;margin-bottom:7px;cursor:pointer;transition:border-color .15s}
+.mcq-card:hover{border-color:var(--border2)}
+.mcq-card.done{border-color:#4ade8040}
+.mcq-card.hidden{display:none}
+.mcq-q{font-size:13px;color:var(--text);line-height:1.6}
+.mcq-meta{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px}
+.mcq-hint{font-size:11px;color:var(--muted);margin-top:5px}
+.mcq-ans{display:none;margin-top:9px;padding:10px 13px;background:#4ade8010;border:1px solid #4ade8040;border-radius:6px;font-size:13px;color:var(--green);font-weight:500}
+.top-bar{display:none;background:var(--bg2);border-bottom:1px solid var(--border);padding:11px 15px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
+@media(max-width:900px){.top-bar{display:flex}}
+.top-bar span{font-size:13px;font-weight:600;color:var(--text)}
+.mob-jump{background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:var(--sans);font-size:12px;padding:5px 10px;border-radius:6px;cursor:pointer}
+code{font-family:var(--mono);font-size:12px;background:var(--bg4);padding:1px 5px;border-radius:3px;color:var(--text)}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>Android Notes — Week 1–3</span>
+  <select class="mob-jump" onchange="document.getElementById(this.value).scrollIntoView({behavior:'smooth'})">
+    <option value="">Jump to section</option>
+    <option value="w1">Week 1 — Android Basics</option>
+    <option value="w1-arch">1.1 Architecture</option>
+    <option value="w1-art">1.2 ART & Runtime</option>
+    <option value="w1-ver">1.3 Versions</option>
+    <option value="w1-tools">1.4 Tools</option>
+    <option value="w2">Week 2 — App Structure</option>
+    <option value="w2-comp">2.1 4 Components</option>
+    <option value="w2-mf">2.2 Manifest File</option>
+    <option value="w2-lc">2.3 Activity Lifecycle</option>
+    <option value="w2-perm">2.4 Permissions</option>
+    <option value="w3">Week 3 — Intents</option>
+    <option value="w3-what">3.1 What is an Intent</option>
+    <option value="w3-types">3.2 Explicit vs Implicit</option>
+    <option value="w3-attrs">3.3 Intent Attributes</option>
+    <option value="w3-res">3.4 Intent Resolution</option>
+    <option value="w3-filter">3.5 Intent Filter</option>
+    <option value="practice">Practice MCQs</option>
+  </select>
+</div>
+
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="course-tag">NPTEL · Android Dev</div>
+    <h2>Study Notes<br>Week 1 → 3</h2>
+    <span class="exam-tag">Exam: Jun 17</span>
+  </div>
+  <div class="nav-week-label">Week 1 — Android Basics</div>
+  <a class="nav-item active" onclick="nav(this,'w1')"><span class="num">1.0</span>Overview</a>
+  <a class="nav-item" onclick="nav(this,'w1-arch')"><span class="num">1.1</span>Architecture &amp; Layers</a>
+  <a class="nav-item" onclick="nav(this,'w1-art')"><span class="num">1.2</span>ART &amp; Runtime</a>
+  <a class="nav-item" onclick="nav(this,'w1-ver')"><span class="num">1.3</span>Android Versions</a>
+  <a class="nav-item" onclick="nav(this,'w1-tools')"><span class="num">1.4</span>Tools &amp; IDE</a>
+  <div class="nav-week-label">Week 2 — App Structure</div>
+  <a class="nav-item" onclick="nav(this,'w2')"><span class="num">2.0</span>Overview</a>
+  <a class="nav-item" onclick="nav(this,'w2-comp')"><span class="num">2.1</span>4 App Components</a>
+  <a class="nav-item" onclick="nav(this,'w2-mf')"><span class="num">2.2</span>Manifest File</a>
+  <a class="nav-item" onclick="nav(this,'w2-lc')"><span class="num">2.3</span>Activity Lifecycle</a>
+  <a class="nav-item" onclick="nav(this,'w2-perm')"><span class="num">2.4</span>Permissions</a>
+  <div class="nav-week-label">Week 3 — Intents <span class="nav-hot">🔥</span></div>
+  <a class="nav-item" onclick="nav(this,'w3')"><span class="num">3.0</span>Overview</a>
+  <a class="nav-item" onclick="nav(this,'w3-what')"><span class="num">3.1</span>What is an Intent</a>
+  <a class="nav-item" onclick="nav(this,'w3-types')"><span class="num">3.2</span>Explicit vs Implicit</a>
+  <a class="nav-item" onclick="nav(this,'w3-attrs')"><span class="num">3.3</span>Intent Attributes</a>
+  <a class="nav-item" onclick="nav(this,'w3-res')"><span class="num">3.4</span>Intent Resolution</a>
+  <a class="nav-item" onclick="nav(this,'w3-filter')"><span class="num">3.5</span>Intent Filter</a>
+  <div class="nav-week-label">Practice</div>
+  <a class="nav-item" onclick="nav(this,'practice')"><span class="num">★</span>MCQ Practice (28 Qs)</a>
+</nav>
+
+<main class="main">
+
+<!-- WEEK 1 -->
+<div class="section" id="w1">
+  <div class="week-header">
+    <span class="week-tag wt-1">Week 1</span>
+    <h1>Android Platform, Architecture &amp; Tools</h1>
+    <p class="subtitle">Understanding what Android is, how it is structured internally, and the tools used to build apps.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#2dd4bf15;color:var(--teal);border:1px solid #2dd4bf40">What is Android?</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">How is it structured?</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">How does it run apps?</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">What tools do we use?</span>
+  </div>
+  <p>Android is an <strong>open-source, Linux-based operating system</strong> designed primarily for mobile devices. It was developed by Google and is the world's most widely used mobile platform. Being open-source means anyone can view, modify, and use the code — which is why hundreds of manufacturers use Android in their phones.</p>
+  <p>Key facts: it is <strong>free</strong> to use, built on the <strong>Linux kernel</strong>, and uses <strong>Java or Kotlin</strong> as primary programming languages. Apps are compiled into <strong>APK (Android Package)</strong> files before being installed.</p>
+  <div class="connect teal">
+    <span class="label">Why the Linux base matters</span>
+    Android being Linux-based is not just a trivia fact. It means Android inherits Linux's security model, process management, and hardware driver system. Every question about Android's foundation traces back to this.
+  </div>
+
+  <h2 id="w1-arch"><span class="h2n">1.1</span>Android Architecture — The 5 Layers</h2>
+  <p>Android is organized in <strong>5 layers</strong> stacked on top of each other. Each layer depends on the one below it. This layered design is why Android can run on thousands of different devices — each device only needs to change the bottom layers, not the top ones.</p>
+  <div class="layer-stack">
+    <div class="layer l-app"><span class="l-num">5</span><span class="l-name">Applications</span><span class="l-desc">— Gmail, Camera, Maps, your own apps</span></div>
+    <div class="layer-arrow">↑ uses APIs from</div>
+    <div class="layer l-fw"><span class="l-num">4</span><span class="l-name">Application Framework</span><span class="l-desc">— Activity Manager, Window Manager, Content Providers, Location Manager, Notification Manager</span></div>
+    <div class="layer-arrow">↑ runs on</div>
+    <div class="layer l-art"><span class="l-num">3</span><span class="l-name">Android Runtime (ART) + Core Libraries</span><span class="l-desc">— executes compiled app code; provides core Java library functionality</span></div>
+    <div class="layer-arrow">↑ communicates with hardware via</div>
+    <div class="layer l-lib"><span class="l-num">2</span><span class="l-name">Hardware Abstraction Layer (HAL)</span><span class="l-desc">— standard interface between Android and device hardware</span></div>
+    <div class="layer-arrow">↑ powered by</div>
+    <div class="layer l-kern"><span class="l-num">1</span><span class="l-name">Linux Kernel</span><span class="l-desc">— manages memory, processes, security, networking, hardware drivers</span></div>
+  </div>
+  <p style="margin-top:14px">The <strong>Application Framework (Layer 4)</strong> is what you actually use when writing Android code — the APIs for Activities, Services, Intents, Permissions etc. all live here. As a developer, you rarely touch Layers 1–3 directly.</p>
+
+  <h2 id="w1-art"><span class="h2n">1.2</span>ART — Android Runtime</h2>
+  <p>When you write Android code in Java, it goes through this pipeline before running on a device:</p>
+  <div class="code-block" style="line-height:1.8">
+Java source code (.java)
+  → compiled to Java bytecode (.class files)
+  → converted to <span class="xml-req">DEX format (.dex files)</span>  ← compact bytecode for mobile
+  → <span class="xml-req">ART executes the .dex files</span> on the device
+  </div>
+  <p><strong>ART (Android Runtime)</strong> is the engine that runs your compiled app code. It replaced the older Dalvik runtime (used until Android 4.4). ART is significantly faster because of how it compiles code.</p>
+  <p>ART has three core features that work together:</p>
+  <table class="ftable">
+    <tr><td class="fkey">AOT — Ahead-of-Time compilation</td><td class="fval">Compiles app code <strong>before it runs</strong> — at install time. Makes apps launch faster because work is done upfront.</td></tr>
+    <tr><td class="fkey">JIT — Just-in-Time compilation</td><td class="fval">Compiles code <strong>during execution</strong> — only the parts currently being used. Re-introduced in Android 7.0 (Nougat) to work alongside AOT.</td></tr>
+    <tr><td class="fkey">GC — Garbage Collection</td><td class="fval">Automatically frees memory that is no longer needed by the app. Prevents memory leaks without the developer manually managing memory.</td></tr>
+  </table>
+  <div class="connect amber">
+    <span class="label">How AOT + JIT work together (Android 9.0+)</span>
+    On Android 9.0 and higher, both run simultaneously. AOT compiles commonly-used code at install time. JIT handles less-used code at runtime and feeds usage data back to improve future AOT compilations. This is called <strong>profile-guided compilation</strong> and is why DEX-to-machine-code conversion starts at 9.0.
+  </div>
+
+  <h2 id="w1-ver"><span class="h2n">1.3</span>Android Versions</h2>
+  <p>Android versions have a version number and a dessert codename. The exam specifically tests version–name mappings and what changed in each version.</p>
+  <table class="ver-table">
+    <tr><th>Version</th><th>Codename</th><th>What changed</th></tr>
+    <tr><td>4.4</td><td>Kit Kat</td><td>Last version using Dalvik runtime</td></tr>
+    <tr><td>5.0</td><td>Lollipop</td><td>ART became the default runtime, replacing Dalvik</td></tr>
+    <tr><td>6.0</td><td>Marshmallow</td><td>Runtime permissions introduced (user approves at runtime)</td></tr>
+    <tr><td>7.0</td><td>Nougat</td><td>JIT compiler re-added to ART alongside AOT</td></tr>
+    <tr class="hl"><td><strong>9.0</strong></td><td><strong>Pie</strong></td><td><strong>DEX files converted to compact machine code — exam answer!</strong></td></tr>
+    <tr><td>10+</td><td>(no codename)</td><td>Google stopped using dessert codenames publicly</td></tr>
+  </table>
+
+  <h2 id="w1-tools"><span class="h2n">1.4</span>Development Tools</h2>
+  <table class="ftable">
+    <tr><td class="fkey">Android Studio</td><td class="fval"><span class="ans">Official IDE</span> for Android development. Built on IntelliJ IDEA by JetBrains, adopted by Google. Replaced Eclipse in 2014 as the official tool. Includes code editor, layout designer, emulator, debugger, and Gradle build system.</td></tr>
+    <tr><td class="fkey">APK Analyzer</td><td class="fval">Built into Android Studio. Used to <strong>inspect the contents of an APK file</strong> — view DEX files, resources, manifest structure, and file size breakdown.</td></tr>
+    <tr><td class="fkey">AVD (Android Virtual Device)</td><td class="fval">An emulator configuration tool. Creates a software simulation of an Android device by defining both <strong>Hardware</strong> (screen size, RAM, camera) <strong>AND Software</strong> (Android version, locale) options.</td></tr>
+    <tr><td class="fkey">ADB (Android Debug Bridge)</td><td class="fval">Command-line tool for communicating between your development machine and an Android device — install APKs, read logs, run shell commands.</td></tr>
+    <tr><td class="fkey">Gradle</td><td class="fval">Build automation system. Compiles your Java/Kotlin code, processes resources, and packages everything into a final APK. Configured via build.gradle files.</td></tr>
+  </table>
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 1</span>
+    <ul>
+      <li>Official IDE = <strong>Android Studio</strong> (not Eclipse, not NetBeans, not Visual Studio)</li>
+      <li>ART features = <strong>AOT + JIT + GC</strong> — always pick all three together</li>
+      <li>Android 9.0 codename = <strong>Pie</strong></li>
+      <li>DEX conversion to machine code starts at = <strong>Android 9.0</strong></li>
+      <li>AVD defines = <strong>Hardware AND Software</strong> options</li>
+      <li>Inspect APK contents = <strong>APK Analyzer</strong> (not Vector Asset Studio)</li>
+      <li>Android supports = <strong>GSM, EDGE and 3G</strong> — all three together</li>
+      <li>NOT an Android feature = <strong>Java ME implementation</strong></li>
+      <li>Proprietary platforms = <strong>Palm, RIM BlackBerry AND Symbian OS</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- WEEK 2 -->
+<div class="section" id="w2">
+  <div class="week-header">
+    <span class="week-tag wt-2">Week 2</span>
+    <h1>Android App Structure — Components, Manifest &amp; Lifecycle</h1>
+    <p class="subtitle">How an Android app is organized, what must be declared, and how Activity states work.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#a78bfa15;color:var(--purple);border:1px solid #a78bfa40">4 Components</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Manifest declares them all</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Activity has a lifecycle</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Permissions protect sensitive data</span>
+  </div>
+  <p>An Android app is not a single monolithic program. It is a collection of <strong>loosely coupled components</strong>, each serving a specific purpose. There are exactly <strong>4 types of components</strong>, and every component that exists in your app must be declared in the AndroidManifest.xml file.</p>
+
+  <h2 id="w2-comp"><span class="h2n">2.1</span>The 4 App Components</h2>
+  <div class="comp-grid">
+    <div class="comp-card cc-a">
+      <span class="c-tag">Component 1</span>
+      <h4>Activity</h4>
+      <p>Represents a <strong>single screen with a UI</strong>. Every screen the user sees is one Activity. Most apps have multiple Activities. The Activity provides the window in which the app draws its interface.</p>
+    </div>
+    <div class="comp-card cc-s">
+      <span class="c-tag">Component 2</span>
+      <h4>Service</h4>
+      <p>Runs <strong>in the background</strong> with no user interface. Used for long-running operations — music playback, file downloads, syncing. To create one, extend the <code>Service</code> base class.</p>
+    </div>
+    <div class="comp-card cc-b">
+      <span class="c-tag">Component 3</span>
+      <h4>Broadcast Receiver</h4>
+      <p>Listens for and responds to <strong>system-wide broadcast messages</strong>. Examples: battery low, screen turned off, incoming SMS, network changed. Has no UI but can display a notification.</p>
+    </div>
+    <div class="comp-card cc-p">
+      <span class="c-tag">Component 4</span>
+      <h4>Content Provider</h4>
+      <p>Manages a <strong>shared set of app data</strong> that other apps can access. Example: the system Contacts app exposes contacts via a Content Provider. Data can live in SQLite, files, or on the web.</p>
+    </div>
+  </div>
+  <div class="connect purple">
+    <span class="label">Connecting Week 2 → Week 3</span>
+    Three of these four components — Activity, Service, and Broadcast Receiver — are <strong>activated by Intents</strong>. Content Providers are activated separately via ContentResolver. This is why Intents (Week 3) are the central messaging system in Android — they activate three of the four building blocks.
+  </div>
+
+  <h2 id="w2-mf"><span class="h2n">2.2</span>The AndroidManifest.xml File</h2>
+  <p>Every Android app must have an <strong>AndroidManifest.xml</strong> file at the root of its project. Before Android starts any component of your app, it reads this file first. If a component is not declared in the Manifest, Android does not know it exists and cannot start it.</p>
+  <p>The Manifest has three main jobs:</p>
+  <p><strong>1.</strong> Declares all four types of components the app contains.<br>
+  <strong>2.</strong> Declares what permissions the app needs (camera, internet, contacts, etc.).<br>
+  <strong>3.</strong> Declares minimum API level and hardware requirements.</p>
+  <div class="code-block">
+<span class="xml-req">&lt;manifest&gt;</span>                              <span class="xml-comment">&lt;!-- REQUIRED (1 of 2 required elements) --&gt;</span>
+<span class="i1"><span class="xml-req">&lt;application&gt;</span>                          <span class="xml-comment">&lt;!-- REQUIRED (2 of 2 required elements) --&gt;</span></span>
+<span class="i2"><span class="xml-opt">&lt;activity android:name=".MainActivity"/&gt;</span>  <span class="xml-comment">&lt;!-- child of application --&gt;</span></span>
+<span class="i2"><span class="xml-opt">&lt;service  android:name=".MyService"/&gt;</span></span>
+<span class="i2"><span class="xml-opt">&lt;receiver android:name=".MyReceiver"/&gt;</span></span>
+<span class="i2"><span class="xml-opt">&lt;provider android:name=".MyProvider"/&gt;</span></span>
+<span class="i1"><span class="xml-req">&lt;/application&gt;</span></span>
+<span class="i1"><span class="xml-opt">&lt;uses-permission android:name="android.permission.CAMERA"/&gt;</span></span>
+<span class="xml-req">&lt;/manifest&gt;</span>
+  </div>
+  <div class="connect amber">
+    <span class="label">Critical rule — only 2 elements are required</span>
+    Only <code>&lt;manifest&gt;</code> and <code>&lt;application&gt;</code> are required. All others are optional in structure, though practically necessary if you use those components. Activity elements are declared as <strong>children of &lt;application&gt;</strong>, not directly under &lt;manifest&gt;.
+  </div>
+
+  <h2 id="w2-lc"><span class="h2n">2.3</span>Activity Lifecycle</h2>
+  <p>An Activity moves through a set of states as the user navigates the app. Android calls specific <strong>callback methods</strong> at each state transition — you override these methods to control what happens at each stage.</p>
+  <div class="lifecycle">
+    <div class="lc lc-star">onCreate()<div class="lc-note">★ DEFAULT</div></div>
+    <span class="lc-arr">→</span>
+    <div class="lc lc-on">onStart()</div>
+    <span class="lc-arr">→</span>
+    <div class="lc lc-on">onResume()</div>
+    <span class="lc-arr">→</span>
+    <div class="lc lc-on">onPause()</div>
+    <span class="lc-arr">→</span>
+    <div class="lc lc-on">onStop()</div>
+    <span class="lc-arr">→</span>
+    <div class="lc lc-end">onDestroy()</div>
+  </div>
+  <div class="lc-note" style="margin-top:8px">Note: onStop() → onRestart() → onStart() if user returns to app from background</div>
+  <table class="ftable" style="margin-top:14px">
+    <tr><td class="fkey">onCreate()</td><td class="fval"><strong>First method called</strong> when the Activity is created. Set up UI here with setContentView(). This is the default event always generated — <span style="color:var(--teal)">exam answer for "default event".</span></td></tr>
+    <tr><td class="fkey">onStart()</td><td class="fval">Activity becomes <strong>visible</strong> to the user but is not yet interactive.</td></tr>
+    <tr><td class="fkey">onResume()</td><td class="fval">Activity is in the <strong>foreground and fully interactive</strong>. User can touch and interact.</td></tr>
+    <tr><td class="fkey">onPause()</td><td class="fval">Activity is <strong>partially obscured</strong> (e.g. a dialog appeared over it). Save lightweight state here.</td></tr>
+    <tr><td class="fkey">onStop()</td><td class="fval">Activity is <strong>no longer visible</strong>. User navigated away. Save heavier state here.</td></tr>
+    <tr><td class="fkey">onDestroy()</td><td class="fval">Activity is being <strong>permanently destroyed</strong>. Release all resources here.</td></tr>
+  </table>
+
+  <h2 id="w2-perm"><span class="h2n">2.4</span>Permissions</h2>
+  <p>Android protects sensitive user data and device features with a <strong>permission system</strong>. An app must explicitly declare which permissions it needs and, for dangerous permissions (camera, contacts, SMS, location), must request approval from the user at runtime.</p>
+  <p>Normal permissions (like internet access) are granted automatically at install. Dangerous permissions require a user dialog. All permissions — regardless of type — must be declared in the Manifest first using <code>&lt;uses-permission&gt;</code>.</p>
+  <div class="connect teal">
+    <span class="label">Manifest + Permissions connection</span>
+    Permissions declared in Manifest = what the app can ask for. Runtime approval = whether the user grants it. Both are needed. Missing the Manifest declaration means the app cannot use that feature even if the user would approve.
+  </div>
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 2</span>
+    <ul>
+      <li>Manifest declares: <strong>Activities, Services, Broadcast Receivers, and Content Providers</strong> — all four</li>
+      <li>Only 2 required Manifest elements: <strong>&lt;manifest&gt; and &lt;application&gt;</strong></li>
+      <li>Activity declared as child of: <strong>&lt;application&gt;</strong> element</li>
+      <li>Default event in Activity = <strong>onCreate()</strong></li>
+      <li>To create a Service, extend: <strong>Service</strong> base class</li>
+      <li>Multiple screens = multiple <strong>Activities</strong></li>
+      <li>To access contacts/SMS/camera: must request <strong>permission</strong></li>
+      <li>Program defined in terms of: <strong>functionality and data</strong></li>
+      <li>Intent Filter allows launching Activity from both explicit AND implicit requests</li>
+    </ul>
+  </div>
+</div>
+
+<!-- WEEK 3 -->
+<div class="section" id="w3">
+  <div class="week-header">
+    <span class="week-tag wt-3">Week 3 🔥</span>
+    <h1>Intents — Inter-Component Communication</h1>
+    <p class="subtitle">How Android components communicate with each other, and how the system finds the right component to handle a request.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#fbbf2415;color:var(--amber);border:1px solid #fbbf2440">What is an Intent?</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Explicit vs Implicit</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Intent Attributes</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Intent Resolution</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Intent Filter</span>
+  </div>
+
+  <h2 id="w3-what"><span class="h2n">3.1</span>What is an Intent?</h2>
+  <p>An <strong>Intent</strong> is a messaging object that requests an action from another app component. It provides <strong>late runtime binding</strong> between components — meaning the connection between the sender and the receiver is made at runtime, not at compile time. This is what allows different apps to work together without knowing about each other in advance.</p>
+  <p>Intents have three primary uses in Android:</p>
+  <p><strong>1. Starting an Activity</strong> → call <code>startActivity(intent)</code><br>
+  <strong>2. Starting a Service</strong> → call <code>startService(intent)</code><br>
+  <strong>3. Delivering a Broadcast</strong> → call <code>sendBroadcast(intent)</code></p>
+  <div class="connect teal">
+    <span class="label">Week 2 → Week 3 Connection</span>
+    In Week 2 you learned the 4 components. Three of them — <strong>Activity, Service, Broadcast Receiver</strong> — are all started by Intents. The Intent is the mechanism that activates them. Content Provider is the only component not activated by an Intent.
+  </div>
+
+  <h2 id="w3-types"><span class="h2n">3.2</span>Explicit vs Implicit Intents</h2>
+  <div class="intent-split">
+    <div class="ib ib-e">
+      <h4>Explicit Intent</h4>
+      <ul>
+        <li>Specifies the <strong>exact component</strong> (class name) to start</li>
+        <li>Used for components <strong>within your own app</strong></li>
+        <li>Android doesn't need to search — destination is fixed</li>
+        <li>Example: open SettingsActivity from MainActivity</li>
+        <li>Component attribute is set → makes it explicit</li>
+      </ul>
+    </div>
+    <div class="ib ib-i">
+      <h4>Implicit Intent</h4>
+      <ul>
+        <li>Does <strong>not name a specific component</strong></li>
+        <li>Declares a general <strong>action</strong> to perform</li>
+        <li>Android searches all apps for one that can handle it</li>
+        <li>Example: ACTION_DIAL → any phone app can handle it</li>
+        <li>Requires <strong>Intent Filter</strong> in target to receive</li>
+      </ul>
+    </div>
+  </div>
+  <div class="connect amber">
+    <span class="label">Key distinction</span>
+    Explicit = <strong>you decide</strong> which component runs (you name it). Implicit = <strong>Android decides</strong> which component runs (based on action + data). This is the fundamental difference between the two types.
+  </div>
+
+  <h2 id="w3-attrs"><span class="h2n">3.3</span>Intent Attributes</h2>
+  <p>An Intent carries information Android uses to determine which component should handle it. The attributes are divided into <strong>one primary</strong> (mandatory) and <strong>four secondary</strong> (optional):</p>
+  <div class="attr-visual">
+    <div class="attr-p">
+      <div class="big">Action</div>
+      <div class="sm">PRIMARY<br>Only mandatory attribute</div>
+    </div>
+    <div class="attr-s">
+      <div class="sm">Secondary Attributes — 4 total</div>
+      <div class="pills">
+        <span class="pill">Category</span>
+        <span class="pill">Type</span>
+        <span class="pill">Component</span>
+        <span class="pill">Extras</span>
+      </div>
+    </div>
+  </div>
+  <table class="ftable" style="margin-top:14px">
+    <tr><td class="fkey">Action (Primary)</td><td class="fval">A string naming the action to perform. This is the <strong>only primary/mandatory</strong> attribute. Examples: ACTION_VIEW, ACTION_DIAL, ACTION_SEND, ACTION_MAIN.</td></tr>
+    <tr><td class="fkey">Category (Secondary)</td><td class="fval">Additional information about the type of component that should handle the Intent. Example: CATEGORY_LAUNCHER = show in app launcher. CATEGORY_DEFAULT = can respond to implicit intents.</td></tr>
+    <tr><td class="fkey">Type (Secondary)</td><td class="fval">Specifies an <strong>explicit MIME type</strong> of the Intent data. Example: "image/jpeg", "text/plain", "video/mp4". This overrides the type that would normally be inferred from the data URI.</td></tr>
+    <tr><td class="fkey">Component (Secondary)</td><td class="fval">Specifies the <strong>exact class name</strong> of the component to start. When this is set, the Intent becomes Explicit. All other attributes become optional.</td></tr>
+    <tr><td class="fkey">Extras (Secondary)</td><td class="fval">Key-value pairs of additional data passed to the target component. Example: passing a username string or an order ID to the next Activity using putExtra().</td></tr>
+    <tr><td class="fkey">Data</td><td class="fval">A URI pointing to the data to act upon. Example: <code>tel:123</code> for a phone number, <code>http://example.com</code> for a URL, <code>content://contacts/1</code> for a contact record.</td></tr>
+  </table>
+
+  <h2 id="w3-res"><span class="h2n">3.4</span>Intent Resolution</h2>
+  <p><strong>Intent resolution</strong> is the process Android uses to find which component should handle an implicit Intent. It compares the Intent against the Intent Filters of all installed apps and finds matches. This happens at runtime when you call startActivity().</p>
+  <p>Android uses exactly <strong>three pieces of information</strong> from the Intent for resolution:</p>
+  <div class="res-flow">
+    <div class="rf-box rf-src">App sends an implicit Intent</div>
+    <div class="rf-arrow">↓  Android reads these 3 pieces</div>
+    <div class="rf-info">
+      <span class="rf-chip rf-c1">1. Action</span>
+      <span class="rf-chip rf-c2">2. Data (URI + MIME type)</span>
+      <span class="rf-chip rf-c3">3. Category</span>
+    </div>
+    <div class="rf-arrow">↓  compared against Intent Filters of installed apps</div>
+    <div class="rf-label">matched component can be →</div>
+    <div class="rf-dest">
+      <span class="rf-d">Activity</span>
+      <span class="rf-d">Service</span>
+      <span class="rf-d">BroadcastReceiver</span>
+    </div>
+  </div>
+  <p style="margin-top:12px">If one match is found → Android starts it directly. If multiple matches → Android shows a chooser dialog. If no match → app crashes with ActivityNotFoundException.</p>
+  <div class="connect purple">
+    <span class="label">Explicit Intents skip resolution entirely</span>
+    Intent resolution only applies to implicit Intents. When you send an explicit Intent (with component name set), Android delivers it directly — no searching, no Intent Filters checked.
+  </div>
+
+  <h2 id="w3-filter"><span class="h2n">3.5</span>Intent Filter</h2>
+  <p>An <strong>Intent Filter</strong> is declared in AndroidManifest.xml inside a component declaration. It specifies what types of implicit Intents a component is willing to receive. It is the component's way of advertising its capabilities.</p>
+  <div class="code-block">
+<span class="xml-opt">&lt;activity android:name=".ShareActivity"&gt;</span>
+<span class="i1"><span class="xml-hl">&lt;intent-filter&gt;</span></span>
+<span class="i2"><span class="xml-tag">&lt;action   android:name="android.intent.action.SEND" /&gt;</span></span>
+<span class="i2"><span class="xml-tag">&lt;category android:name="android.intent.category.DEFAULT" /&gt;</span></span>
+<span class="i2"><span class="xml-tag">&lt;data     android:mimeType="text/plain" /&gt;</span></span>
+<span class="i1"><span class="xml-hl">&lt;/intent-filter&gt;</span></span>
+<span class="xml-opt">&lt;/activity&gt;</span>
+  </div>
+  <p>This says: "ShareActivity can handle an ACTION_SEND Intent with plain text data." Any app that creates such an Intent may trigger this Activity. Intent Filters give components the ability to launch from both explicit AND implicit requests.</p>
+  <div class="connect coral">
+    <span class="label">Intent Filter vs Explicit Intent</span>
+    Intent Filters are only checked for <strong>implicit Intents</strong>. For explicit Intents (where the component is named directly), Android ignores all Intent Filters and delivers directly to the named component.
+  </div>
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 3 (Quiz 3 had ALL 10 questions on Intents)</span>
+    <ul>
+      <li>Intent provides <strong>late runtime binding</strong> between codes in different apps</li>
+      <li>Intent primary attribute = <strong>Action</strong> (only one primary, mandatory)</li>
+      <li>Secondary attributes = <strong>Category, Type, Component, Extras</strong> — all four</li>
+      <li>Type specifies = <strong>explicit MIME type</strong> of intent data</li>
+      <li>Explicit Intents = specify the <strong>exact component/class</strong> to run</li>
+      <li>Intent resolution maps Intent to = <strong>Activity, BroadcastReceiver, or Service</strong></li>
+      <li>Intent resolution uses = <strong>three</strong> pieces of info (Action, Data, Category)</li>
+      <li>To navigate between Activities use = <strong>Intent</strong> class</li>
+      <li>Method to launch new Activity = <strong>startActivity()</strong></li>
+      <li>Phone dialer action = <strong>ACTION_DIAL tel:123</strong> (not ACTION_VIEW)</li>
+      <li>Intent Filter = allows launching from both explicit AND implicit requests</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<div class="mcq-wrap" id="practice">
+  <div class="mcq-header">
+    <h1>Practice MCQs</h1>
+    <p>28 questions covering all of Week 1–3. Tap any card to reveal the answer.</p>
+  </div>
+  <div class="mcq-controls">
+    <button class="mf on" onclick="filterQ('all',this)">All (28)</button>
+    <button class="mf" onclick="filterQ('W1',this)">Week 1 (10)</button>
+    <button class="mf" onclick="filterQ('W2',this)">Week 2 (9)</button>
+    <button class="mf" onclick="filterQ('W3',this)">Week 3 (9)</button>
+    <button class="rev-btn" onclick="revealAll()">Reveal All</button>
+  </div>
+  <div class="score-line">Revealed: <span id="sc">0</span> / <span id="tot">28</span></div>
+  <div id="qlist"></div>
+</div>
+
+</main>
+</div>
+
+<script>
+function nav(el, id) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+const qs = [
+  {q:"Which is the official IDE for Android development?", a:"Android Studio — not Eclipse, NetBeans, or Visual Studio.", w:"W1"},
+  {q:"What does ART stand for?", a:"Android Runtime.", w:"W1"},
+  {q:"What are the three major features of ART?", a:"AOT (Ahead-of-Time compilation), JIT (Just-in-Time compilation), and GC (Garbage Collection) — all three together.", w:"W1"},
+  {q:"Android version 9.0 is known as?", a:"Pie.", w:"W1"},
+  {q:"On Android ___ and higher, DEX files are converted to compact machine code.", a:"9.0 (Android Pie).", w:"W1"},
+  {q:"Which tool in Android Studio inspects the contents of an APK file?", a:"APK Analyzer — not Vector Asset Studio.", w:"W1"},
+  {q:"An AVD lets you model a device by defining which type of options?", a:"Hardware AND Software options — both together.", w:"W1"},
+  {q:"Which network standards does Android support?", a:"GSM, EDGE, and 3G — all three together.", w:"W1"},
+  {q:"Which of these is NOT an Android feature?", a:"Java ME implementation. Android uses a Java SE subset, not Java ME.", w:"W1"},
+  {q:"Which platforms are examples of proprietary mobile platforms?", a:"Palm, RIM BlackBerry AND Symbian OS — all three.", w:"W1"},
+  {q:"Generally, a program is defined in terms of?", a:"Functionality and data.", w:"W2"},
+  {q:"By default, the Activity created contains which event?", a:"onCreate() — it is the first lifecycle method, always created by default.", w:"W2"},
+  {q:"What does the Manifest file declare?", a:"Activities, services, broadcast receivers, and content providers — all four components.", w:"W2"},
+  {q:"To access contacts, SMS, or camera, an Android app must request?", a:"Permission.", w:"W2"},
+  {q:"Only which elements are required in the Manifest file?", a:"<manifest> and <application> — just these two.", w:"W2"},
+  {q:"To create a Service, your class must extend which base class?", a:"Service base class.", w:"W2"},
+  {q:"What provides the window in which an app draws its UI?", a:"Activity.", w:"W2"},
+  {q:"Most apps contain multiple screens, meaning they comprise multiple?", a:"Activities — one screen = one Activity.", w:"W2"},
+  {q:"To declare an Activity in Manifest, add it as a child of which element?", a:"The <application> element — not directly under <manifest>.", w:"W2"},
+  {q:"What provides late runtime binding between codes in different applications?", a:"Intent.", w:"W3"},
+  {q:"How many primary attributes does an Intent have, and which one is it?", a:"One primary attribute — Action. Category, Type, Component, Extras are all secondary.", w:"W3"},
+  {q:"Which of these is a secondary attribute of Intent?", a:"Category, Type, Component and Extras — all four are secondary attributes.", w:"W3"},
+  {q:"Which Intent attribute specifies an explicit MIME type of the intent data?", a:"Type.", w:"W3"},
+  {q:"Which type of Intent specifies the exact component (class) to run?", a:"Explicit Intent.", w:"W3"},
+  {q:"What process maps an Intent to an Activity, BroadcastReceiver, or Service?", a:"Intent resolution.", w:"W3"},
+  {q:"How many pieces of information does Intent resolution use?", a:"Three — Action, Data (URI + MIME type), and Category.", w:"W3"},
+  {q:"Which method is used to launch a new Activity?", a:"startActivity().", w:"W3"},
+  {q:"Which action displays the phone dialer with a given number filled in?", a:"ACTION_DIAL tel:123 — not ACTION_VIEW (which opens URLs in a browser).", w:"W3"},
+];
+
+let revealed = 0;
+const list = document.getElementById('qlist');
+document.getElementById('tot').textContent = qs.length;
+
+qs.forEach((item, i) => {
+  const d = document.createElement('div');
+  d.className = 'mcq-card'; d.dataset.week = item.w; d.id = 'mc' + i;
+  d.innerHTML = `<div class="mcq-q"><strong>Q${i+1}.</strong> ${item.q}</div><div class="mcq-meta">${item.w}</div><div class="mcq-hint" id="h${i}">↓ tap to reveal answer</div><div class="mcq-ans" id="a${i}">✓ ${item.a}</div>`;
+  d.onclick = () => revOne(i);
+  list.appendChild(d);
+});
+
+function revOne(i) {
+  const a = document.getElementById('a'+i), h = document.getElementById('h'+i), c = document.getElementById('mc'+i);
+  if (a.style.display !== 'block') { a.style.display='block'; h.style.display='none'; c.classList.add('done'); revealed++; document.getElementById('sc').textContent = revealed; }
+}
+function revealAll() { qs.forEach((_,i) => revOne(i)); }
+function filterQ(w, btn) {
+  document.querySelectorAll('.mf').forEach(b => b.classList.remove('on')); btn.classList.add('on');
+  document.querySelectorAll('.mcq-card').forEach(c => { c.classList.toggle('hidden', w !== 'all' && c.dataset.week !== w); });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Android Dev — Complete Notes Week 4–12</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0e;--bg2:#131316;--bg3:#1a1a1f;--bg4:#202026;--border:#2c2c35;--border2:#3a3a45;--text:#e2e0ec;--muted:#6e6c82;--muted2:#9997b0;--teal:#2dd4bf;--purple:#a78bfa;--amber:#fbbf24;--coral:#f87171;--blue:#60a5fa;--green:#4ade80;--pink:#f472b6;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.7}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:255px;min-width:255px;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:0 0 60px;flex-shrink:0}
+.sidebar-header{padding:20px 18px 14px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.course-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--teal);margin-bottom:5px;text-transform:uppercase;display:block}
+.sidebar-header h2{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+.exam-tag{display:inline-block;margin-top:8px;background:#f8717120;border:1px solid var(--coral);color:var(--coral);font-size:11px;font-family:var(--mono);padding:3px 10px;border-radius:4px}
+.nav-week-label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;padding:14px 18px 5px}
+.nav-item{display:block;padding:6px 18px;color:var(--muted2);font-size:12.5px;text-decoration:none;border-left:2px solid transparent;transition:all .15s;cursor:pointer}
+.nav-item:hover{color:var(--text);background:var(--bg3)}
+.nav-item.active{color:var(--teal);border-left-color:var(--teal);background:#2dd4bf0a}
+.nav-item .num{font-family:var(--mono);font-size:10px;color:var(--muted);margin-right:5px}
+.nav-hot{color:var(--coral);font-size:10px;margin-left:3px}
+.main{flex:1;min-width:0;padding:0 0 80px}
+.section{border-bottom:1px solid var(--border);padding:44px 48px;max-width:860px}
+@media(max-width:900px){.sidebar{display:none}.section{padding:28px 18px}.mcq-wrap{padding:28px 18px}}
+.week-header{margin-bottom:28px}
+.week-tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:block}
+.wt-4{color:var(--coral)}.wt-5{color:var(--purple)}.wt-6{color:var(--teal)}.wt-7{color:var(--amber)}.wt-8{color:var(--pink)}.wt-9{color:var(--blue)}.wt-10{color:var(--green)}.wt-11{color:var(--amber)}.wt-12{color:var(--teal)}
+.week-header h1{font-size:24px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:6px}
+.week-header .subtitle{color:var(--muted2);font-size:13px}
+.topic-flow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:16px 0 26px;padding:12px 16px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)}
+.flow-step{font-size:11px;font-weight:500;padding:4px 10px;border-radius:4px}
+.flow-arrow{color:var(--muted);font-size:13px}
+.section h2{font-size:17px;font-weight:600;color:#fff;margin:30px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.h2n{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.section p{color:var(--muted2);margin-bottom:11px;font-size:14px;line-height:1.8}
+.section p strong{color:var(--text);font-weight:500}
+.connect{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:13px 17px;margin:14px 0;font-size:13px;color:var(--muted2);line-height:1.7}
+.connect .label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;display:block}
+.connect.teal{border-left:3px solid var(--teal)}.connect.teal .label{color:var(--teal)}
+.connect.purple{border-left:3px solid var(--purple)}.connect.purple .label{color:var(--purple)}
+.connect.amber{border-left:3px solid var(--amber)}.connect.amber .label{color:var(--amber)}
+.connect.coral{border-left:3px solid var(--coral)}.connect.coral .label{color:var(--coral)}
+.connect.blue{border-left:3px solid var(--blue)}.connect.blue .label{color:var(--blue)}
+.connect strong{color:var(--text);font-weight:500}
+.ftable{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.ftable tr{border-bottom:1px solid var(--border)}
+.ftable tr:last-child{border-bottom:none}
+.ftable td{padding:9px 10px;vertical-align:top}
+.fkey{color:var(--muted2);width:42%;font-weight:500}
+.fval{color:var(--text)}
+.fval .ans{color:var(--teal);font-weight:600}
+.fval .warn{color:var(--coral)}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:12px 0;font-family:var(--mono);font-size:12px;line-height:2;overflow-x:auto}
+.xml-tag{color:var(--blue)}.xml-req{color:var(--teal);font-weight:600}.xml-opt{color:var(--muted2)}.xml-attr{color:var(--purple)}.xml-comment{color:var(--muted);font-style:italic}.xml-hl{color:var(--amber);font-weight:600}
+.i1{padding-left:20px;display:block}.i2{padding-left:40px;display:block}
+.exam-box{background:#f8717108;border:1px solid #f8717140;border-radius:8px;padding:14px 17px;margin:20px 0}
+.exam-box .elabel{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--coral);text-transform:uppercase;margin-bottom:8px;display:block}
+.exam-box ul{padding-left:16px}
+.exam-box ul li{font-size:13px;color:var(--muted2);padding:3px 0;line-height:1.6}
+.exam-box ul li strong{color:var(--text);font-weight:500}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:580px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:700px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:450px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:15px 16px}
+.card .ctag{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block}
+.card h4{font-size:13px;font-weight:600;margin-bottom:5px}
+.card p{font-size:12px;color:var(--muted2);margin:0;line-height:1.6}
+.c-teal .ctag,.c-teal h4{color:var(--teal)}.c-teal{background:#2dd4bf08;border-color:#2dd4bf30}
+.c-purple .ctag,.c-purple h4{color:var(--purple)}.c-purple{background:#a78bfa08;border-color:#a78bfa30}
+.c-amber .ctag,.c-amber h4{color:var(--amber)}.c-amber{background:#fbbf2408;border-color:#fbbf2430}
+.c-blue .ctag,.c-blue h4{color:var(--blue)}.c-blue{background:#60a5fa08;border-color:#60a5fa30}
+.c-coral .ctag,.c-coral h4{color:var(--coral)}.c-coral{background:#f8717108;border-color:#f8717130}
+.c-pink .ctag,.c-pink h4{color:var(--pink)}.c-pink{background:#f472b608;border-color:#f472b630}
+.c-green .ctag,.c-green h4{color:var(--green)}.c-green{background:#4ade8008;border-color:#4ade8030}
+code{font-family:var(--mono);font-size:12px;background:var(--bg4);padding:1px 5px;border-radius:3px;color:var(--text)}
+.perm-row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.perm-box{border-radius:8px;padding:14px 16px;flex:1;min-width:160px;border:1px solid var(--border)}
+.perm-box h4{font-size:13px;font-weight:600;margin-bottom:8px}
+.perm-box ul{list-style:none;padding:0}
+.perm-box ul li{font-size:12px;color:var(--muted2);padding:3px 0;line-height:1.5}
+.perm-box ul li::before{content:'• ';opacity:.5}
+.pb-normal{background:#2dd4bf08;border-color:#2dd4bf30}.pb-normal h4{color:var(--teal)}
+.pb-sig{background:#a78bfa08;border-color:#a78bfa30}.pb-sig h4{color:var(--purple)}
+.pb-danger{background:#f8717108;border-color:#f8717130}.pb-danger h4{color:var(--coral)}
+.storage-row{display:flex;flex-direction:column;gap:6px;margin:14px 0}
+.storage-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg3)}
+.storage-item .sname{font-size:13px;font-weight:600;min-width:160px;flex-shrink:0}
+.storage-item .sdesc{font-size:12px;color:var(--muted2);line-height:1.5}
+.si-sp .sname{color:var(--teal)}.si-is .sname{color:var(--purple)}.si-es .sname{color:var(--amber)}.si-db .sname{color:var(--blue)}
+.json-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+@media(max-width:560px){.json-split{grid-template-columns:1fr}}
+.jbox{border-radius:8px;padding:14px;border:1px solid var(--border)}
+.jbox-obj{background:#2dd4bf08;border-color:#2dd4bf30}.jbox-obj h4{color:var(--teal)}
+.jbox-arr{background:#a78bfa08;border-color:#a78bfa30}.jbox-arr h4{color:var(--purple)}
+.jbox h4{font-size:13px;font-weight:600;margin-bottom:8px}
+.jbox .jcode{font-family:var(--mono);font-size:12px;color:var(--muted2);line-height:1.8}
+.net-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.net-table th{text-align:left;padding:8px 10px;background:var(--bg4);color:var(--muted2);font-weight:500;font-family:var(--mono);font-size:10px;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.net-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--muted2);vertical-align:top}
+.net-table tr:last-child td{border-bottom:none}
+.net-table .hl td{background:#2dd4bf08;color:var(--text)}
+.net-table .hl td:first-child{border-left:2px solid var(--teal)}
+.mcq-wrap{padding:44px 48px;max-width:860px}
+.mcq-header{margin-bottom:24px}
+.mcq-header h1{font-size:22px;font-weight:600;color:#fff;margin-bottom:5px}
+.mcq-header p{font-size:13px;color:var(--muted2)}
+.mcq-controls{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.mf{background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:var(--sans);font-size:11px;padding:5px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.mf:hover,.mf.on{background:#2dd4bf12;border-color:var(--teal);color:var(--teal)}
+.rev-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--muted2);font-family:var(--sans);font-size:12px;padding:6px 13px;border-radius:6px;cursor:pointer;margin-left:auto;transition:all .15s}
+.rev-btn:hover{border-color:var(--teal);color:var(--teal)}
+.score-line{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:14px}
+.score-line span{color:var(--teal);font-weight:600}
+.mcq-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:15px 17px;margin-bottom:7px;cursor:pointer;transition:border-color .15s}
+.mcq-card:hover{border-color:var(--border2)}
+.mcq-card.done{border-color:#4ade8040}
+.mcq-card.hidden{display:none}
+.mcq-q{font-size:13px;color:var(--text);line-height:1.6}
+.mcq-meta{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px}
+.mcq-hint{font-size:11px;color:var(--muted);margin-top:5px}
+.mcq-ans{display:none;margin-top:9px;padding:10px 13px;background:#4ade8010;border:1px solid #4ade8040;border-radius:6px;font-size:13px;color:var(--green);font-weight:500}
+.top-bar{display:none;background:var(--bg2);border-bottom:1px solid var(--border);padding:11px 15px;position:sticky;top:0;z-index:50;align-items:center;justify-content:space-between}
+@media(max-width:900px){.top-bar{display:flex}}
+.top-bar span{font-size:13px;font-weight:600;color:var(--text)}
+.mob-jump{background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:var(--sans);font-size:12px;padding:5px 10px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>Android Notes — Week 4–12</span>
+  <select class="mob-jump" onchange="document.getElementById(this.value)?.scrollIntoView({behavior:'smooth'})">
+    <option value="">Jump to section</option>
+    <option value="w4">Week 4 — Permissions & Resources</option>
+    <option value="w5">Week 5 — UI & Layouts</option>
+    <option value="w6">Week 6 — Content Providers & Data Storage</option>
+    <option value="w7">Week 7 — JSON Web Services</option>
+    <option value="w8">Week 8 — Graphics & Animation</option>
+    <option value="w9">Week 9 — Networking & Telephony</option>
+    <option value="w10">Week 10 — Search, Maps & Social</option>
+    <option value="w11">Week 11 — Sensors & Hardware</option>
+    <option value="w12">Week 12 — Publishing</option>
+    <option value="practice">Practice MCQs</option>
+  </select>
+</div>
+
+<div class="shell">
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="course-tag">NPTEL · Android Dev</div>
+    <h2>Study Notes<br>Week 4 → 12</h2>
+    <span class="exam-tag">Exam: Jun 17</span>
+  </div>
+
+  <div class="nav-week-label">Week 4</div>
+  <a class="nav-item active" onclick="nav(this,'w4')"><span class="num">4.0</span>Permissions &amp; Resources</a>
+  <a class="nav-item" onclick="nav(this,'w4-perms')"><span class="num">4.1</span>Permission Types</a>
+  <a class="nav-item" onclick="nav(this,'w4-res')"><span class="num">4.2</span>App Resources</a>
+
+  <div class="nav-week-label">Week 5</div>
+  <a class="nav-item" onclick="nav(this,'w5')"><span class="num">5.0</span>UI &amp; Layouts</a>
+  <a class="nav-item" onclick="nav(this,'w5-view')"><span class="num">5.1</span>Views &amp; ViewGroups</a>
+  <a class="nav-item" onclick="nav(this,'w5-layouts')"><span class="num">5.2</span>Layout Types</a>
+  <a class="nav-item" onclick="nav(this,'w5-widgets')"><span class="num">5.3</span>UI Widgets</a>
+
+  <div class="nav-week-label">Week 6</div>
+  <a class="nav-item" onclick="nav(this,'w6')"><span class="num">6.0</span>Data Storage</a>
+  <a class="nav-item" onclick="nav(this,'w6-storage')"><span class="num">6.1</span>Storage Options</a>
+  <a class="nav-item" onclick="nav(this,'w6-sqlite')"><span class="num">6.2</span>SQLite Database</a>
+  <a class="nav-item" onclick="nav(this,'w6-views')"><span class="num">6.3</span>Media Views</a>
+
+  <div class="nav-week-label">Week 7</div>
+  <a class="nav-item" onclick="nav(this,'w7')"><span class="num">7.0</span>JSON &amp; Web Services</a>
+  <a class="nav-item" onclick="nav(this,'w7-json')"><span class="num">7.1</span>JSON Format</a>
+  <a class="nav-item" onclick="nav(this,'w7-async')"><span class="num">7.2</span>AsyncTask</a>
+  <a class="nav-item" onclick="nav(this,'w7-cp')"><span class="num">7.3</span>Content Providers</a>
+
+  <div class="nav-week-label">Week 8</div>
+  <a class="nav-item" onclick="nav(this,'w8')"><span class="num">8.0</span>Graphics &amp; Animation</a>
+  <a class="nav-item" onclick="nav(this,'w8-graphics')"><span class="num">8.1</span>2D/3D Graphics</a>
+  <a class="nav-item" onclick="nav(this,'w8-anim')"><span class="num">8.2</span>Animation Types</a>
+  <a class="nav-item" onclick="nav(this,'w8-media')"><span class="num">8.3</span>Media Player</a>
+
+  <div class="nav-week-label">Week 9</div>
+  <a class="nav-item" onclick="nav(this,'w9')"><span class="num">9.0</span>Networking &amp; Telephony</a>
+  <a class="nav-item" onclick="nav(this,'w9-net')"><span class="num">9.1</span>Network APIs</a>
+  <a class="nav-item" onclick="nav(this,'w9-nfc')"><span class="num">9.2</span>NFC</a>
+  <a class="nav-item" onclick="nav(this,'w9-tel')"><span class="num">9.3</span>Telephony API</a>
+
+  <div class="nav-week-label">Week 10</div>
+  <a class="nav-item" onclick="nav(this,'w10')"><span class="num">10.0</span>Search, Maps &amp; Social</a>
+
+  <div class="nav-week-label">Week 11</div>
+  <a class="nav-item" onclick="nav(this,'w11')"><span class="num">11.0</span>Sensors &amp; Hardware</a>
+  <a class="nav-item" onclick="nav(this,'w11-sensors')"><span class="num">11.1</span>Sensor Framework</a>
+  <a class="nav-item" onclick="nav(this,'w11-gesture')"><span class="num">11.2</span>Gestures &amp; Speech</a>
+
+  <div class="nav-week-label">Week 12</div>
+  <a class="nav-item" onclick="nav(this,'w12')"><span class="num">12.0</span>Publishing</a>
+
+  <div class="nav-week-label">Practice</div>
+  <a class="nav-item" onclick="nav(this,'practice')"><span class="num">★</span>MCQ Practice (80+ Qs)</a>
+</nav>
+
+<main class="main">
+
+<!-- ══ WEEK 4 ══ -->
+<div class="section" id="w4">
+  <div class="week-header">
+    <span class="week-tag wt-4">Week 4</span>
+    <h1>Permissions &amp; Application Resources</h1>
+    <p class="subtitle">How Android controls access to sensitive features, and how app resources are organized.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#f8717115;color:var(--coral);border:1px solid #f8717140">Why permissions exist</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">3 types of permissions</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">How resources work</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">android.R to access them</span>
+  </div>
+
+  <p>By design, <strong>no Android app has permission to perform any operations that would adversely affect other apps, the OS, or the user</strong>. This is a central security principle. Apps must explicitly request permissions, and users must approve sensitive ones.</p>
+  <p>The purpose of a permission is to <strong>protect the privacy of an Android user</strong>. Permissions are declared in the Manifest and requested at runtime (Android 6.0+) for dangerous permissions.</p>
+
+  <h2 id="w4-perms"><span class="h2n">4.1</span>Three Types of Permissions</h2>
+  <div class="perm-row">
+    <div class="perm-box pb-normal">
+      <h4>Normal Permission</h4>
+      <ul>
+        <li>Low risk to user privacy</li>
+        <li>Granted <strong>automatically</strong> at install</li>
+        <li>No user dialog shown</li>
+        <li>Example: <code>ACCESS_WIFI_STATE</code></li>
+        <li>Example: <code>SET_WALLPAPER</code></li>
+        <li>Example: <code>INTERNET</code></li>
+      </ul>
+    </div>
+    <div class="perm-box pb-sig">
+      <h4>Signature Permission</h4>
+      <ul>
+        <li>Granted only to apps signed with the <strong>same certificate</strong></li>
+        <li>Used between apps from same developer</li>
+        <li>No user dialog needed</li>
+        <li>Example: <code>MANAGE_DOCUMENTS</code></li>
+        <li>Example: <code>READ_VOICEMAIL</code></li>
+        <li>Affects <strong>third-party apps</strong></li>
+      </ul>
+    </div>
+    <div class="perm-box pb-danger">
+      <h4>Dangerous Permission</h4>
+      <ul>
+        <li>High risk — accesses private data</li>
+        <li>User must <strong>approve at runtime</strong></li>
+        <li>Android 6.0+ requirement</li>
+        <li>Example: <code>RECORD_AUDIO</code></li>
+        <li>Example: <code>SEND_SMS</code></li>
+        <li>Example: camera, contacts, location</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="connect amber">
+    <span class="label">Important rule — Normal permissions auto-granted</span>
+    If your app lists <strong>normal permissions</strong> in its manifest, the system automatically grants those permissions. You do NOT need to ask the user. Only <strong>dangerous permissions</strong> require a runtime request dialog. This is a common MCQ trap.
+  </div>
+
+  <div class="connect coral">
+    <span class="label">Android 6.0 (Marshmallow) change</span>
+    Before Android 6.0, all permissions were requested at install time. From Android 6.0 onwards, dangerous permissions must be requested at <strong>runtime</strong>. The answer for "when is permission requested" = <strong>Either Runtime or Install-Time</strong> depending on the version.
+  </div>
+
+  <h2 id="w4-res"><span class="h2n">4.2</span>Application Resources</h2>
+  <p>Resources are the non-code files your app uses — images, layouts, strings, colors, animations. They are stored <strong>separately from Java class files</strong> in the Android project, under the <code>/res</code> directory.</p>
+
+  <div class="code-block">
+res/
+  drawable/      ← images, icons (PNG, JPG, XML drawables)
+  layout/        ← XML layout files for screens
+  values/        ← strings.xml, colors.xml, dimens.xml
+  raw/           ← ← <span class="xml-req">videos, audio files stored here</span>
+  anim/          ← animation XML files
+  xml/           ← arbitrary XML files
+  mipmap/        ← launcher icons
+  </div>
+
+  <p>All resources are accessible via the <strong><code>android.R</code></strong> class. The android package contains all kinds of resources which you can browse by looking in the <code>android.R</code> subclasses.</p>
+
+  <p>Key rules about resources:</p>
+  <p>• All resources must be stored under <code>/res</code> in <strong>specially named subdirectories that must be lowercase</strong>.<br>
+  • Most common resource types are stored in <strong>XML files</strong>.<br>
+  • Android resource files are stored <strong>separately from Java class files</strong>.<br>
+  • Resources like bitmaps, layouts, and animations are all examples of app resources.</p>
+
+  <div class="connect teal">
+    <span class="label">How to set an image resource dynamically (code)</span>
+    To dynamically assign an image named <code>car</code> from the drawable folder to an ImageView:<br>
+    <code>image.setImageResource(R.drawable.car)</code> — this is the correct method. Not setImageDrawable, not setImage, not setResource.
+  </div>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 4</span>
+    <ul>
+      <li>Purpose of permission = <strong>protect privacy of Android user</strong></li>
+      <li>No app, by default, has permission to harm others = <strong>TRUE</strong></li>
+      <li>Normal permissions auto-granted = <strong>TRUE</strong> (system grants automatically)</li>
+      <li>Normal Permission example = <strong>ACCESS_WIFI_STATE</strong></li>
+      <li>Signature Permission example = <strong>MANAGE_DOCUMENTS</strong></li>
+      <li>Dangerous Permission example = <strong>RECORD_AUDIO and SEND_SMS</strong></li>
+      <li>SET_WALLPAPER = <strong>Normal</strong> permission type</li>
+      <li>READ_VOICEMAIL = <strong>Signature</strong> permission type</li>
+      <li>Protection levels affecting third-party apps = <strong>Normal, Signature and Dangerous</strong></li>
+      <li>Resource subdirectory names must be = <strong>Lowercase</strong></li>
+      <li>Most common resource types stored in = <strong>XML</strong> files</li>
+      <li>Browse resources via = <strong>android.R</strong> subclasses</li>
+      <li>Videos stored in = <strong>/res/raw/</strong> directory</li>
+      <li>Resources examples = <strong>bitmap, layout and animation</strong></li>
+      <li>Dynamic image assignment = <strong>image.setImageResource(R.drawable.car)</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 5 ══ -->
+<div class="section" id="w5">
+  <div class="week-header">
+    <span class="week-tag wt-5">Week 5</span>
+    <h1>User Interface — Layouts, Views &amp; Widgets</h1>
+    <p class="subtitle">How Android screens are built from Views and ViewGroups, and the different layout types available.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#a78bfa15;color:var(--purple);border:1px solid #a78bfa40">View (basic UI block)</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">ViewGroup (contains Views)</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Layout (arranges ViewGroups)</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Widgets (interactive controls)</span>
+  </div>
+
+  <h2 id="w5-view"><span class="h2n">5.1</span>View and ViewGroup</h2>
+  <p>Every UI element in Android is a <strong>View</strong>. A View occupies a rectangular area on screen and is responsible for drawing and event handling. All interactive UI components (buttons, text fields, checkboxes) are subclasses of View.</p>
+  <p>A <strong>ViewGroup</strong> is a special type of View that can contain other Views (and other ViewGroups). ViewGroup is the <strong>base class for layouts</strong>. The difference: View = leaf node, ViewGroup = container node.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">View</td><td class="fval"><span class="ans">Base class for widgets</span> — used to create interactive UI components (buttons, text fields, etc.). Draws itself and handles events.</td></tr>
+    <tr><td class="fkey">ViewGroup</td><td class="fval"><span class="ans">Base class for layouts</span> — invisible container that holds other Views and defines how they are arranged.</td></tr>
+    <tr><td class="fkey">Layout controls</td><td class="fval">Determine <strong>how and where</strong> on screen child controls are drawn.</td></tr>
+    <tr><td class="fkey">All controls available in</td><td class="fval"><code>android.widget</code> package</td></tr>
+    <tr><td class="fkey">Hide/show a View</td><td class="fval"><code>setVisibility(int)</code> method</td></tr>
+    <tr><td class="fkey">Set layout attributes at runtime</td><td class="fval">TRUE — you CAN set layout attributes programmatically at runtime.</td></tr>
+  </table>
+
+  <p>You can create a layout in two ways: using <strong>XML resource files</strong> (declarative, design-time) or <strong>programmatically</strong> in Java code (runtime). Both are valid — <strong>either XML Resources or Programmatically</strong>.</p>
+
+  <h2 id="w5-layouts"><span class="h2n">5.2</span>Layout Types</h2>
+  <p>The Android SDK framework includes three main built-in layout types. Each arranges child views differently.</p>
+
+  <div class="grid3">
+    <div class="card c-teal">
+      <span class="ctag">Layout 1</span>
+      <h4>LinearLayout</h4>
+      <p>Organizes child Views in a <strong>single row or column</strong>, depending on orientation attribute (horizontal or vertical). Designed to <strong>block out an area for a single item</strong>.</p>
+    </div>
+    <div class="card c-purple">
+      <span class="ctag">Layout 2</span>
+      <h4>RelativeLayout</h4>
+      <p>Allows you to specify where child view controls are <strong>in relation to each other</strong>. Views are positioned relative to parent or sibling views.</p>
+    </div>
+    <div class="card c-blue">
+      <span class="ctag">Layout 3</span>
+      <h4>FlowLayout</h4>
+      <p>Designed to <strong>block out an area on screen to display a single item</strong>. Less commonly used; wraps content and flows to next line.</p>
+    </div>
+  </div>
+
+  <div class="connect amber">
+    <span class="label">Exam trap — layouts built in to Android SDK</span>
+    The answer is <strong>FlowLayout, RelativeLayout and LinearLayout</strong> — all three are built-in. When the question asks which one arranges in a single row/column = LinearLayout. Which one lets you position relative to each other = RelativeLayout.
+  </div>
+
+  <h2 id="w5-widgets"><span class="h2n">5.3</span>UI Widgets and Controls</h2>
+  <table class="ftable">
+    <tr><td class="fkey">TextView</td><td class="fval">Displays text. Read-only. Not for input.</td></tr>
+    <tr><td class="fkey">EditText</td><td class="fval"><span class="ans">UI element for entering and modifying text</span>. User can type in it.</td></tr>
+    <tr><td class="fkey">Button</td><td class="fval">Clickable element that triggers an action.</td></tr>
+    <tr><td class="fkey">RadioButton</td><td class="fval">Allows user to <strong>select one option</strong> from a set. Usually inside a RadioGroup.</td></tr>
+    <tr><td class="fkey">Checkbox</td><td class="fval">Allows user to select <strong>multiple options</strong> independently.</td></tr>
+    <tr><td class="fkey">Spinner</td><td class="fval">Dropdown list to select one item from a set.</td></tr>
+    <tr><td class="fkey">ListView / GridView / GalleryView</td><td class="fval">View <strong>container controls</strong> — examples of View containers.</td></tr>
+    <tr><td class="fkey">WebView</td><td class="fval">Used to <strong>embed a web browser</strong> in your Activity / display web pages.</td></tr>
+    <tr><td class="fkey">VideoView</td><td class="fval">Used for video playback. Choose it from the <strong>Widget</strong> palette category.</td></tr>
+    <tr><td class="fkey">MediaController</td><td class="fval">Class used to provide <strong>controls for video playback</strong> (play, pause, seek bar).</td></tr>
+  </table>
+
+  <p><strong>Adapters</strong> connect data to Views that display lists:</p>
+  <table class="ftable">
+    <tr><td class="fkey">ArrayAdapter</td><td class="fval">Binds each element of an array to a <strong>single View object</strong> within the layout resource.</td></tr>
+    <tr><td class="fkey">CursorAdapter</td><td class="fval">Good choice when <strong>using data from a database</strong> (SQLite cursor).</td></tr>
+  </table>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 5</span>
+    <ul>
+      <li>Base class for widgets = <strong>View</strong></li>
+      <li>Base class for layouts = <strong>ViewGroup</strong></li>
+      <li>All controls in package = <strong>android.widget</strong></li>
+      <li>Layout controls determine = <strong>how and where child controls are drawn</strong></li>
+      <li>Layouts built into Android SDK = <strong>FlowLayout, RelativeLayout and LinearLayout</strong></li>
+      <li>LinearLayout = organizes in <strong>single row or column</strong></li>
+      <li>RelativeLayout = specifies where <strong>child views are in relation to each other</strong></li>
+      <li>FlowLayout = designed to <strong>block out area to display single item</strong></li>
+      <li>Create layout using = <strong>Either XML Resources or Programmatically</strong></li>
+      <li>UI element for entering text = <strong>EditText</strong> (not TextView)</li>
+      <li>Select one option from a set = <strong>Radio Button</strong></li>
+      <li>View container examples = <strong>ListView, GridView, and GalleryView</strong></li>
+      <li>Embed web browser = <strong>WebView</strong></li>
+      <li>Controls for video = <strong>MediaController</strong></li>
+      <li>VideoView found in palette = <strong>Widget</strong> category</li>
+      <li>Array → single View = <strong>ArrayAdapter</strong></li>
+      <li>Data from database → View = <strong>CursorAdapter</strong></li>
+      <li>Hide/show views = <strong>setVisibility(int)</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 6 ══ -->
+<div class="section" id="w6">
+  <div class="week-header">
+    <span class="week-tag wt-6">Week 6</span>
+    <h1>Content Providers &amp; Data Storage</h1>
+    <p class="subtitle">The four ways Android apps store data, and how to work with SQLite databases.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#2dd4bf15;color:var(--teal);border:1px solid #2dd4bf40">4 storage options</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Shared Preferences</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">SQLite Database</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Internal / External Storage</span>
+  </div>
+
+  <h2 id="w6-storage"><span class="h2n">6.1</span>Android Storage Options</h2>
+  <p>Android provides <strong>four storage options</strong> for persisting app data. Each serves a different purpose and access level.</p>
+
+  <div class="storage-row">
+    <div class="storage-item si-sp">
+      <div class="sname">Shared Preferences</div>
+      <div class="sdesc">Stores <strong>primitive data in key-value pairs</strong>. Private to the app. Use <code>getSharedPreferences()</code> to access. Best for settings, flags, small values like username. Data is stored in a private XML file.</div>
+    </div>
+    <div class="storage-item si-is">
+      <div class="sname">Internal Storage</div>
+      <div class="sdesc">Stores data <strong>on device memory, private to the app</strong>. Not accessible by other users or apps (except the developer). Good for files that must be private.</div>
+    </div>
+    <div class="storage-item si-es">
+      <div class="sname">External Storage</div>
+      <div class="sdesc">Stores data on <strong>shared external storage</strong> (SD card or public internal storage). Accessible by other apps and users. Not suitable for private data.</div>
+    </div>
+    <div class="storage-item si-db">
+      <div class="sname">SQLite Databases</div>
+      <div class="sdesc">Stores <strong>structured data in a private database</strong>. Full SQL support. Accessible within the app. Database is stored in a <strong>private</strong> location.</div>
+    </div>
+  </div>
+
+  <div class="connect purple">
+    <span class="label">Memory trick — which stores what</span>
+    <strong>Shared Preferences</strong> = key-value pairs (primitive data)<br>
+    <strong>Internal Storage</strong> = private files (not accessible by anyone else)<br>
+    <strong>External Storage</strong> = shared files (anyone can read)<br>
+    <strong>SQLite</strong> = structured relational data (tables, rows, SQL queries)
+  </div>
+
+  <h2 id="w6-sqlite"><span class="h2n">6.2</span>SQLite Database</h2>
+  <p>SQLite is an <strong>open-source, relational SQL database</strong> that stores data in a text file on the device. It does NOT need a server connection — you don't need to establish any kind of connection to access it. It <strong>supports all the relational database features</strong>.</p>
+
+  <p>To use SQLite in Android:</p>
+  <p><strong>Step 1:</strong> Create a class that inherits from <code>SQLiteOpenHelper</code> — this is the first and required step.<br>
+  <strong>Step 2:</strong> Override <code>public abstract void onCreate(SQLiteDatabase db)</code> — called once when database is first created.<br>
+  <strong>Step 3:</strong> Use the helper to get a readable/writable database instance and run SQL queries.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">SQLite type</td><td class="fval"><span class="ans">Open-source and relational</span></td></tr>
+    <tr><td class="fkey">No connection needed</td><td class="fval">TRUE — SQLite doesn't need a server connection</td></tr>
+    <tr><td class="fkey">Supports all relational features</td><td class="fval">TRUE — full SQL support (SELECT, INSERT, UPDATE, DELETE)</td></tr>
+    <tr><td class="fkey">Database stored in</td><td class="fval"><span class="ans">private</span> database location</td></tr>
+    <tr><td class="fkey">First step to use SQLite</td><td class="fval">Create class inheriting from <span class="ans">SQLiteOpenHelper</span></td></tr>
+    <tr><td class="fkey">Method called on first DB creation</td><td class="fval"><code>public abstract void onCreate(SQLiteDatabase db)</code></td></tr>
+    <tr><td class="fkey">Good adapter for database data</td><td class="fval"><span class="ans">CursorAdapter</span></td></tr>
+  </table>
+
+  <h2 id="w6-views"><span class="h2n">6.3</span>Media &amp; Web Views</h2>
+  <table class="ftable">
+    <tr><td class="fkey">WebView</td><td class="fval">Displays web pages inside your Activity. Used to <strong>embed a web browser</strong>. Method to use: <code>WebView</code>.</td></tr>
+    <tr><td class="fkey">VideoView</td><td class="fval">Plays video files. Found in Widget palette category.</td></tr>
+    <tr><td class="fkey">MediaController</td><td class="fval">Provides video playback controls (play/pause/seek).</td></tr>
+    <tr><td class="fkey">To use Shared Preferences</td><td class="fval">Call <code>getSharedPreferences()</code> method.</td></tr>
+    <tr><td class="fkey">Shared Preferences stores</td><td class="fval">Primitive data that is <strong>private in key-value pairs</strong>.</td></tr>
+  </table>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 6</span>
+    <ul>
+      <li>Android data storage options = <strong>Shared Preferences, Internal Storage, External Storage and SQLite Databases</strong> — all four</li>
+      <li>Storage not accessible by others = <strong>Internal Storage</strong></li>
+      <li>Stores key-value pairs = <strong>Shared Preferences</strong></li>
+      <li>Stores structured data in private database = <strong>SQLite Databases</strong></li>
+      <li>SQLite = <strong>open-source AND relational</strong></li>
+      <li>SQLite needs no connection = <strong>TRUE</strong></li>
+      <li>SQLite supports all relational features = <strong>TRUE</strong> (NOT false)</li>
+      <li>SQLite database stored = <strong>private</strong> location</li>
+      <li>First step for SQLite = inherit from <strong>SQLiteOpenHelper</strong></li>
+      <li>onCreate(SQLiteDatabase db) called = <strong>only once when DB first created</strong></li>
+      <li>View that displays web pages = <strong>WebView</strong></li>
+      <li>Method for Shared Preferences = <strong>getSharedPreferences()</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 7 ══ -->
+<div class="section" id="w7">
+  <div class="week-header">
+    <span class="week-tag wt-7">Week 7</span>
+    <h1>JSON Web Services &amp; Content Providers</h1>
+    <p class="subtitle">How Android apps exchange data over the internet, and how Content Providers share data between apps.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#fbbf2415;color:var(--amber);border:1px solid #fbbf2440">Web services use XML/JSON</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">JSON format & syntax</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">AsyncTask for background work</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Content Providers share data</span>
+  </div>
+
+  <p>Web services allow apps to exchange data over the internet. They generally use <strong>XML</strong> for data messaging. JSON is a lighter alternative to XML for the same purpose.</p>
+
+  <h2 id="w7-json"><span class="h2n">7.1</span>JSON — JavaScript Object Notation</h2>
+  <p>JSON stands for <strong>JavaScript Object Notation</strong>. It is <strong>data-oriented</strong> (not document-oriented, not tag-oriented). JSON is extended from <strong>JavaScript</strong>. It is an alternative to XML for data exchange, and for the same data, JSON file size is <strong>smaller</strong> than XML.</p>
+
+  <div class="json-split">
+    <div class="jbox jbox-obj">
+      <h4>JSON Object — { curly brackets }</h4>
+      <div class="jcode">
+        {<br>
+        &nbsp;&nbsp;"name": "Android",<br>
+        &nbsp;&nbsp;"version": 9.0,<br>
+        &nbsp;&nbsp;"open": true<br>
+        }<br>
+        <br>
+        Key must always be a <strong style="color:var(--teal)">String</strong><br>
+        Represents a single object
+      </div>
+    </div>
+    <div class="jbox jbox-arr">
+      <h4>JSON Array — [ square brackets ]</h4>
+      <div class="jcode">
+        [<br>
+        &nbsp;&nbsp;"Android",<br>
+        &nbsp;&nbsp;"iOS",<br>
+        &nbsp;&nbsp;"Windows"<br>
+        ]<br>
+        <br>
+        <strong style="color:var(--purple)">[ ]</strong> = array<br>
+        <strong style="color:var(--teal)">{ }</strong> = object
+      </div>
+    </div>
+  </div>
+
+  <table class="ftable">
+    <tr><td class="fkey">JSON stands for</td><td class="fval"><span class="ans">JavaScript Object Notation</span></td></tr>
+    <tr><td class="fkey">JSON extended from</td><td class="fval"><span class="ans">JavaScript</span> (not Java)</td></tr>
+    <tr><td class="fkey">JSON is</td><td class="fval"><span class="ans">data-oriented</span></td></tr>
+    <tr><td class="fkey">JSON vs XML file size</td><td class="fval">JSON is <span class="ans">smaller</span> than XML for same data</td></tr>
+    <tr><td class="fkey">JSON is alternative to</td><td class="fval"><span class="ans">XML</span></td></tr>
+    <tr><td class="fkey">JSON array represented by</td><td class="fval"><span class="ans">Square bracket [ ]</span></td></tr>
+    <tr><td class="fkey">JSON object represented by</td><td class="fval"><span class="ans">Curly bracket { }</span></td></tr>
+    <tr><td class="fkey">JSON object key is always</td><td class="fval"><span class="ans">String</span></td></tr>
+    <tr><td class="fkey">XML stands for</td><td class="fval"><span class="ans">Extensible Markup Language</span></td></tr>
+    <tr><td class="fkey">Web services exchange data using</td><td class="fval"><span class="ans">XML</span> (generally)</td></tr>
+    <tr><td class="fkey">Android parses</td><td class="fval"><span class="ans">JSON object and JSON array</span> — both</td></tr>
+  </table>
+
+  <h2 id="w7-async"><span class="h2n">7.2</span>AsyncTask — Background Operations</h2>
+  <p>Network calls (fetching JSON from web) cannot be done on the main UI thread — it would freeze the app. <strong>AsyncTask</strong> allows performing background operations and publishing results on the UI thread without managing threads manually.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">AsyncTask best for</td><td class="fval"><span class="ans">Short</span> operations (not long-running background tasks)</td></tr>
+    <tr><td class="fkey">Must override at least</td><td class="fval"><code>doInBackground(Params...)</code> — this is the only required override</td></tr>
+    <tr><td class="fkey">doInBackground()</td><td class="fval">Runs on <strong>background thread</strong>. Do the actual work here (network call, DB query).</td></tr>
+    <tr><td class="fkey">onPostExecute(Result)</td><td class="fval">Runs on <strong>UI thread after background</strong> computation finishes. Update UI here.</td></tr>
+    <tr><td class="fkey">onPreExecute()</td><td class="fval">Runs on UI thread <strong>before</strong> background work starts. Show progress dialog here.</td></tr>
+    <tr><td class="fkey">onProgressUpdate()</td><td class="fval">Runs on UI thread to <strong>publish progress</strong> during background execution.</td></tr>
+  </table>
+
+  <h2 id="w7-cp"><span class="h2n">7.3</span>Content Providers</h2>
+  <p>A <strong>Content Provider</strong> is a component that supplies data from one application to others on request. It is a standard interface for sharing data between apps. Content Providers are TRUE components of an Android app.</p>
+
+  <div class="connect teal">
+    <span class="label">Connection — Week 2 → Week 7</span>
+    Content Providers were introduced as one of the 4 Android components in Week 2. In Week 7 we go deeper — they are the mechanism that lets different apps share structured data safely through a standard URI-based interface.
+  </div>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 7</span>
+    <ul>
+      <li>Web services exchange data using = <strong>XML</strong></li>
+      <li>Android supports parsing = <strong>JSON object and JSON array</strong></li>
+      <li>XML stands for = <strong>Extensible Markup Language</strong></li>
+      <li>JSON extended from = <strong>JavaScript</strong></li>
+      <li>JSON is = <strong>data-oriented</strong></li>
+      <li>JSON array = <strong>square bracket [ ]</strong></li>
+      <li>JSON object = <strong>curly bracket { }</strong></li>
+      <li>JSON file size vs XML = <strong>smaller</strong></li>
+      <li>JSON is alternative to = <strong>XML</strong></li>
+      <li>JSON object key is always = <strong>String</strong></li>
+      <li>AsyncTask best for = <strong>Short</strong> operations</li>
+      <li>AsyncTask must override = <strong>doInBackground(Params...)</strong></li>
+      <li>Method on UI thread after background finishes = <strong>onPostExecute(Result)</strong></li>
+      <li>Content Provider is a component = <strong>TRUE</strong> (supplies data from one app to others)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 8 ══ -->
+<div class="section" id="w8">
+  <div class="week-header">
+    <span class="week-tag wt-8">Week 8</span>
+    <h1>Graphics, Multimedia &amp; Animation</h1>
+    <p class="subtitle">Drawing 2D/3D graphics on Android, working with animations, and playing media files.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#f472b615;color:var(--pink);border:1px solid #f472b640">2D/3D Graphics APIs</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Canvas & Paint</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Animation types</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">MediaPlayer</span>
+  </div>
+
+  <h2 id="w8-graphics"><span class="h2n">8.1</span>2D and 3D Graphics</h2>
+  <p>The Android framework provides a rich set of APIs for drawing custom <strong>2D and 3D graphics</strong>. For 2D drawing, Android uses the <strong>Canvas</strong> class. For 3D, it uses GPU APIs.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Android draws custom graphics</td><td class="fval"><span class="ans">2D and 3D</span> — both together</td></tr>
+    <tr><td class="fkey">Canvas class is in package</td><td class="fval"><code>android.graphics</code> package</td></tr>
+    <tr><td class="fkey">GPU APIs for Android</td><td class="fval"><span class="ans">Vulkan and OpenGL ES</span> — both</td></tr>
+    <tr><td class="fkey">Most common resource types</td><td class="fval">Stored in <span class="ans">XML</span> files</td></tr>
+  </table>
+
+  <h2 id="w8-anim"><span class="h2n">8.2</span>Animation</h2>
+  <p>Animations in Android apps can be performed through <strong>XML or Android code</strong> — both methods are valid.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Perform animations via</td><td class="fval"><span class="ans">XML or android code</span> — either method</td></tr>
+    <tr><td class="fkey">android:interpolator</td><td class="fval">The attribute that controls the <span class="ans">rate of change</span> in animation (speed curve — ease in, ease out, linear)</td></tr>
+    <tr><td class="fkey">Tweened animation</td><td class="fval">Calculates animation info such as <strong>size, rotation, start point, and end point</strong>. Android computes intermediate frames.</td></tr>
+    <tr><td class="fkey">Clear animation on a view</td><td class="fval"><code>clearAnimation()</code> method</td></tr>
+    <tr><td class="fkey">Start animation</td><td class="fval"><code>startAnimation()</code> method</td></tr>
+  </table>
+
+  <div class="connect amber">
+    <span class="label">Tweened vs Frame Animation</span>
+    <strong>Tweened (Tween) animation</strong> — you define start and end, Android calculates all the frames in between. It calculates size, rotation, start point, endpoint. This is the most common type tested in MCQs.
+  </div>
+
+  <h2 id="w8-media"><span class="h2n">8.3</span>MediaPlayer — Audio &amp; Video</h2>
+  <p>The <strong>MediaPlayer</strong> class lets you play audio or video files with multiple playback options: play, pause, forward, backward, etc. This statement is TRUE.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">MediaPlayer can play</td><td class="fval">Audio OR video files — with play, pause, forward, backward controls. TRUE.</td></tr>
+    <tr><td class="fkey">Get total duration of song</td><td class="fval"><code>getDuration()</code> method — returns total time in milliseconds</td></tr>
+    <tr><td class="fkey">ACTION_DIAL tel:123</td><td class="fval">Displays the <span class="ans">phone dialer</span> with the given number filled in (not ACTION_VIEW)</td></tr>
+  </table>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 8</span>
+    <ul>
+      <li>Android graphics API = <strong>2D and 3D</strong> — both</li>
+      <li>Canvas class in package = <strong>android.graphics</strong></li>
+      <li>GPU APIs = <strong>Vulkan and OpenGL ES</strong></li>
+      <li>Animations performed via = <strong>XML or android code</strong></li>
+      <li>Rate of change in animation = <strong>android:interpolator</strong></li>
+      <li>Tweened animation calculates = <strong>size, rotation, start point, endpoint</strong></li>
+      <li>Clear animation = <strong>clearAnimation()</strong></li>
+      <li>MediaPlayer plays audio/video with multiple controls = <strong>TRUE</strong></li>
+      <li>Get song duration = <strong>getDuration()</strong></li>
+      <li>Phone dialer action = <strong>ACTION_DIAL tel:123</strong></li>
+      <li>Most resource types stored in = <strong>XML</strong> files</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 9 ══ -->
+<div class="section" id="w9">
+  <div class="week-header">
+    <span class="week-tag wt-9">Week 9</span>
+    <h1>Networking, Telephony &amp; Location API</h1>
+    <p class="subtitle">How Android apps connect to networks, use NFC, and interact with telephony features.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#60a5fa15;color:var(--blue);border:1px solid #60a5fa40">ConnectivityManager</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">WiFiManager</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">NFC</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Telephony API</span>
+  </div>
+
+  <h2 id="w9-net"><span class="h2n">9.1</span>Network APIs</h2>
+  <p>To check network connectivity in Android, you use the <strong>ConnectivityManager</strong> class. You get an instance of it by calling <code>getSystemService()</code>.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Get ConnectivityManager instance</td><td class="fval"><code>getSystemService()</code> method</td></tr>
+    <tr><td class="fkey">getAllNetworkInfo()</td><td class="fval">Returns an <span class="ans">array</span> of Network Info = <strong>TRUE</strong></td></tr>
+    <tr><td class="fkey">Wi-Fi scanning API</td><td class="fval"><span class="ans">WifiManager</span> — use its API to get list of Wi-Fi access points visible from device</td></tr>
+    <tr><td class="fkey">Request a Wi-Fi scan</td><td class="fval"><code>startScan()</code> method of WifiManager</td></tr>
+    <tr><td class="fkey">Android 7.0 Wi-Fi changes</td><td class="fval">Android 7.0 introduced restrictions on Wi-Fi scan permissions and frequency = <strong>FALSE</strong> (restrictions on scan frequency yes, but this is a tricky true/false — accepted answer was FALSE)</td></tr>
+  </table>
+
+  <h2 id="w9-nfc"><span class="h2n">9.2</span>NFC — Near Field Communication</h2>
+  <p>NFC allows short-range wireless communication between devices. Android provides the <code>android.nfc</code> package for NFC communication.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">NFC modes of operation</td><td class="fval">Android-powered NFC devices support <span class="ans">three</span> main modes simultaneously</td></tr>
+    <tr><td class="fkey">Check NFC availability</td><td class="fval">Check if <code>getDefaultAdapter()</code> is <span class="ans">null</span> — if null, NFC not available. = <strong>TRUE</strong></td></tr>
+    <tr><td class="fkey">NFC package</td><td class="fval"><span class="ans">android.nfc</span></td></tr>
+  </table>
+
+  <h2 id="w9-tel"><span class="h2n">9.3</span>Telephony API</h2>
+  <p>The Telephony provider contains data related to phone operations — specifically <strong>SMS and MMS messages, access to the APN list including the MMSC to use, and the service state</strong>. This is TRUE.</p>
+
+  <p>To launch services using Intents and Activities, use the methods: <strong>startService() and bindService()</strong> — both together.</p>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 9</span>
+    <ul>
+      <li>Get ConnectivityManager = <strong>getSystemService()</strong></li>
+      <li>getAllNetworkInfo() returns = <strong>array of Network Info</strong> = TRUE</li>
+      <li>Wi-Fi scanning API = <strong>WifiManager</strong></li>
+      <li>Request scan using = <strong>startScan()</strong> of WifiManager</li>
+      <li>NFC simultaneous modes = <strong>three</strong></li>
+      <li>Check NFC availability = check if <strong>getDefaultAdapter() is null</strong> = TRUE</li>
+      <li>NFC package = <strong>android.nfc</strong></li>
+      <li>Telephony contains SMS, MMS data = <strong>TRUE</strong></li>
+      <li>Launch services using = <strong>startService() and bindService()</strong></li>
+      <li>MediaPlayer plays with multiple playback options = <strong>TRUE</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 10 ══ -->
+<div class="section" id="w10">
+  <div class="week-header">
+    <span class="week-tag wt-10">Week 10</span>
+    <h1>Search, Location, Mapping &amp; Social Media</h1>
+    <p class="subtitle">Implementing search, working with maps and location, and integrating communication and social media.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#4ade8015;color:var(--green);border:1px solid #4ade8040">Search API</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Location & Mapping</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">SMS & Bluetooth</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Social Media Integration</span>
+  </div>
+
+  <p><strong>No quiz for Week 10</strong> — but final quiz has questions from these topics. Focus on core concepts.</p>
+
+  <h2><span class="h2n">10.1</span>Communication Features</h2>
+  <p>Android provides built-in support for SMS and phone calls via Intents and the Telephony API. For Bluetooth, the <code>android.bluetooth</code> package provides the necessary classes.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Send SMS programmatically</td><td class="fval">Use <code>SmsManager</code> class or Intents with <code>ACTION_SENDTO</code></td></tr>
+    <tr><td class="fkey">Call and SMS features</td><td class="fval">Accessible via Telephony API and Intents</td></tr>
+    <tr><td class="fkey">Wi-Fi features</td><td class="fval">WifiManager class — scan, connect, manage Wi-Fi</td></tr>
+    <tr><td class="fkey">Bluetooth</td><td class="fval"><code>android.bluetooth</code> package — discover, pair, transfer data</td></tr>
+  </table>
+
+  <h2><span class="h2n">10.2</span>Location and Mapping</h2>
+  <p>Android provides Location APIs through <code>android.location</code> package. Google Maps can be integrated via the Google Maps Android API. LocationManager provides access to the system location services.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Location services class</td><td class="fval"><code>LocationManager</code> — get location updates from GPS or network</td></tr>
+    <tr><td class="fkey">Location package</td><td class="fval"><code>android.location</code></td></tr>
+    <tr><td class="fkey">Search interface</td><td class="fval">Android provides a SearchView widget and a Search dialog for implementing search functionality</td></tr>
+  </table>
+
+  <h2><span class="h2n">10.3</span>Identity, Sync and Social Media</h2>
+  <p>Android provides APIs to access contacts (via Content Provider), sync data via SyncAdapter, and integrate with social media platforms via their SDKs or Intent-based sharing (ACTION_SEND).</p>
+
+  <div class="connect blue">
+    <span class="label">Final Quiz connection</span>
+    Week 10 topics appear in the Final Quiz through questions about Intents (ACTION_SEND for social sharing), Telephony (SMS), Bluetooth, and Wi-Fi. Review Week 9 networking alongside Week 10.
+  </div>
+</div>
+
+<!-- ══ WEEK 11 ══ -->
+<div class="section" id="w11">
+  <div class="week-header">
+    <span class="week-tag wt-11">Week 11</span>
+    <h1>Sensor &amp; Hardware Programming</h1>
+    <p class="subtitle">How Android accesses device sensors, detects gestures, and converts speech to text.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#fbbf2415;color:var(--amber);border:1px solid #fbbf2440">Android Sensor Framework</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">SensorManager class</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">GestureDetector</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">SpeechRecognizer</span>
+  </div>
+
+  <p><strong>No quiz for Week 11</strong> — but Quiz-10 (the last quiz, found in Week 12 file) and the Final Quiz test these topics heavily.</p>
+
+  <h2 id="w11-sensors"><span class="h2n">11.1</span>Android Sensor Framework (ASF)</h2>
+  <p>ASF stands for <strong>Android Sensor Framework</strong>. It gives access to sensors built into the device. Sensors can be hardware-based (physical chips) or software-based (virtual sensors that mimic hardware).</p>
+
+  <p>The <strong>software-centric sensors mimic hardware-based sensors</strong> — this is TRUE.</p>
+
+  <div class="grid2">
+    <div class="card c-teal">
+      <span class="ctag">Class 1</span>
+      <h4>SensorManager</h4>
+      <p>Use this to make an instance of the <strong>sensor administration</strong>. Entry point for the sensor system — access all sensors.</p>
+    </div>
+    <div class="card c-purple">
+      <span class="ctag">Class 2</span>
+      <h4>Sensor</h4>
+      <p>Use this to make an instance of a <strong>particular sensor</strong> — e.g. accelerometer, gyroscope, light sensor.</p>
+    </div>
+    <div class="card c-amber">
+      <span class="ctag">Interface</span>
+      <h4>SensorEventListener</h4>
+      <p>Interface to make <strong>two callback strategies</strong> that get warnings when sensor values change or accuracy changes.</p>
+    </div>
+    <div class="card c-blue">
+      <span class="ctag">Object</span>
+      <h4>SensorEvent</h4>
+      <p>The object passed to the listener callbacks — contains sensor data values at a specific point in time.</p>
+    </div>
+  </div>
+
+  <table class="ftable" style="margin-top:14px">
+    <tr><td class="fkey">ASF stands for</td><td class="fval"><span class="ans">Android Sensor Framework</span></td></tr>
+    <tr><td class="fkey">Software sensors mimic hardware</td><td class="fval"><strong>TRUE</strong></td></tr>
+    <tr><td class="fkey">Sensor administration instance</td><td class="fval"><span class="ans">SensorManager</span></td></tr>
+    <tr><td class="fkey">Particular sensor instance</td><td class="fval"><span class="ans">Sensor</span></td></tr>
+    <tr><td class="fkey">Two callback strategies</td><td class="fval"><span class="ans">SensorEventListener</span> interface</td></tr>
+    <tr><td class="fkey">Raw data monitoring</td><td class="fval"><code>onAccuracyChanged()</code> and <code>onSensorChanged()</code> — both together</td></tr>
+  </table>
+
+  <h2 id="w11-gesture"><span class="h2n">11.2</span>Gestures, Speech &amp; Accessibility</h2>
+  <table class="ftable">
+    <tr><td class="fkey">Detect common gestures</td><td class="fval"><span class="ans">GestureDetector</span> class</td></tr>
+    <tr><td class="fkey">Convert speech to text</td><td class="fval"><span class="ans">SpeechRecognizer</span> class</td></tr>
+    <tr><td class="fkey">Text to speech</td><td class="fval"><code>SpeechSynthesizer</code> / <code>TextToSpeech</code> class</td></tr>
+  </table>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 11 (Quiz 10)</span>
+    <ul>
+      <li>ASF = <strong>Android Sensor Framework</strong></li>
+      <li>Software sensors mimic hardware = <strong>TRUE</strong></li>
+      <li>Sensor administration instance = <strong>SensorManager</strong></li>
+      <li>Particular sensor instance = <strong>Sensor</strong></li>
+      <li>Two callback strategies interface = <strong>SensorEventListener</strong></li>
+      <li>Raw data monitoring = <strong>onAccuracyChanged() and onSensorChanged()</strong></li>
+      <li>Detect common gestures = <strong>GestureDetector</strong></li>
+      <li>Speech to text = <strong>SpeechRecognizer</strong></li>
+      <li>Last phase of Android app development = <strong>publishing</strong></li>
+      <li>APK types we can generate = <strong>signed and unsigned</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ WEEK 12 ══ -->
+<div class="section" id="w12">
+  <div class="week-header">
+    <span class="week-tag wt-12">Week 12</span>
+    <h1>Publishing Android Application</h1>
+    <p class="subtitle">The final steps — preparing, signing, and publishing your app to the Google Play Store.</p>
+  </div>
+  <div class="topic-flow">
+    <span class="flow-step" style="background:#2dd4bf15;color:var(--teal);border:1px solid #2dd4bf40">Prepare app</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Generate signed APK</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Upload to Play Store</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step" style="background:var(--bg4);color:var(--muted2);border:1px solid var(--border)">Monetize</span>
+  </div>
+
+  <p>Publishing is the <strong>last phase</strong> of the Android application development process. The complete development cycle is: Design → Develop → Test → <strong>Publish</strong>.</p>
+
+  <h2><span class="h2n">12.1</span>APK Types and Signing</h2>
+  <p>An APK (Android Package) is the file format for distributing Android apps. Android can generate <strong>two types of APK: signed and unsigned</strong>.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">Last phase of development</td><td class="fval"><span class="ans">Publishing</span></td></tr>
+    <tr><td class="fkey">APK types</td><td class="fval"><span class="ans">Signed and unsigned</span></td></tr>
+    <tr><td class="fkey">Signed APK</td><td class="fval">Required for Google Play Store submission. Signed with a private key (keystore). This proves the app is from a verified developer.</td></tr>
+    <tr><td class="fkey">Unsigned APK</td><td class="fval">For testing only. Cannot be uploaded to Play Store.</td></tr>
+    <tr><td class="fkey">WAP is stripped-down version of</td><td class="fval"><span class="ans">http</span> (not https, not ftp)</td></tr>
+  </table>
+
+  <h2><span class="h2n">12.2</span>Publishing Process</h2>
+  <p><strong>Step 1 — Prepare:</strong> Remove debug code, check app permissions, optimize images and resources.<br>
+  <strong>Step 2 — Build signed APK:</strong> Generate a signed APK using Android Studio (Build → Generate Signed APK). Create or use a keystore file with your private key.<br>
+  <strong>Step 3 — Create Developer Account:</strong> Register on Google Play Console (one-time $25 fee).<br>
+  <strong>Step 4 — Upload:</strong> Upload the signed APK, add screenshots, description, category, and pricing.<br>
+  <strong>Step 5 — Publish:</strong> Submit for review. App goes live after Google review.</p>
+
+  <div class="exam-box">
+    <span class="elabel">Exam Focus — Week 12</span>
+    <ul>
+      <li>Last phase of development = <strong>publishing</strong></li>
+      <li>APK types = <strong>signed and unsigned</strong></li>
+      <li>WAP = stripped-down version of <strong>http</strong></li>
+      <li>GestureDetector class used for = detecting <strong>common gestures</strong></li>
+      <li>SpeechRecognizer used for = <strong>speech to text</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ FINAL QUIZ EXTRA FACTS ══ -->
+<div class="section" id="finalquiz">
+  <div class="week-header">
+    <span class="week-tag" style="color:var(--coral)">FINAL QUIZ</span>
+    <h1>Final Quiz — Extra Facts &amp; Tricky Questions</h1>
+    <p class="subtitle">60-question final quiz covering all weeks. These are facts that appear in the final but not in weekly quizzes.</p>
+  </div>
+
+  <p>The Final Quiz had 60 questions worth 0.5 points each (30 total). It covered material from all 12 weeks. Below are the key answers from the final quiz that add to your weekly notes.</p>
+
+  <table class="ftable">
+    <tr><td class="fkey">WAP stripped-down version of</td><td class="fval"><span class="ans">http</span></td></tr>
+    <tr><td class="fkey">Android is called ___ mobile platform</td><td class="fval"><span class="ans">Complete, open and free</span></td></tr>
+    <tr><td class="fkey">AVD created by</td><td class="fval"><span class="ans">Either Tools &gt; AVD Manager OR Click AVD Manager in toolbar</span></td></tr>
+    <tr><td class="fkey">HAL provides</td><td class="fval"><span class="ans">Hardware Abstraction Layer</span> — standard interfaces exposing device hardware to Java API framework</td></tr>
+    <tr><td class="fkey">Android OS available through APIs in</td><td class="fval"><span class="ans">Java</span> language</td></tr>
+    <tr><td class="fkey">Activity lost focus but still visible</td><td class="fval"><span class="ans">Paused</span> state (not stopped, not destroyed)</td></tr>
+    <tr><td class="fkey">Event when activity becomes visible</td><td class="fval"><span class="ans">onStart()</span></td></tr>
+    <tr><td class="fkey">Get context by invoking</td><td class="fval"><span class="ans">getApplicationContext() or getContext() or getBaseContext()</span></td></tr>
+    <tr><td class="fkey">File describes important app info</td><td class="fval"><span class="ans">Manifest</span> file</td></tr>
+    <tr><td class="fkey">Launch services using</td><td class="fval"><span class="ans">startService() and bindService()</span></td></tr>
+    <tr><td class="fkey">Intent is an abstract description of</td><td class="fval"><span class="ans">an operation to be performed</span></td></tr>
+    <tr><td class="fkey">Primary pieces of info in Intent</td><td class="fval"><span class="ans">Action and Data</span></td></tr>
+    <tr><td class="fkey">Intents are used for</td><td class="fval"><span class="ans">All of these</span> — display web page, send message, start activity, send broadcast, start services</td></tr>
+    <tr><td class="fkey">Android 6.0 permission requested at</td><td class="fval"><span class="ans">Either Runtime or Install-Time</span> (not just Runtime!)</td></tr>
+    <tr><td class="fkey">Protection level affecting third-party apps</td><td class="fval"><span class="ans">Normal, Signature and Dangerous</span></td></tr>
+    <tr><td class="fkey">android package resources in</td><td class="fval"><span class="ans">android.R</span> subclasses</td></tr>
+    <tr><td class="fkey">Resources subdirectory must be</td><td class="fval"><span class="ans">Lowercase</span></td></tr>
+    <tr><td class="fkey">View is base class for widgets</td><td class="fval"><code>View</code> — creates interactive UI components</td></tr>
+    <tr><td class="fkey">Layouts built in = </td><td class="fval"><span class="ans">FlowLayout, RelativeLayout and LinearLayout</span></td></tr>
+    <tr><td class="fkey">LinearLayout = single row/column</td><td class="fval"><span class="ans">LinearLayout</span></td></tr>
+    <tr><td class="fkey">Create layout using</td><td class="fval"><span class="ans">Either XML Resources or Programmatically</span></td></tr>
+    <tr><td class="fkey">CursorAdapter used with</td><td class="fval">Data from a <span class="ans">database</span></td></tr>
+    <tr><td class="fkey">SQLite = opensource SQL that stores data</td><td class="fval">In a <span class="ans">text file on a device</span></td></tr>
+    <tr><td class="fkey">Internal Storage = private, not accessible by</td><td class="fval">Other users or apps</td></tr>
+    <tr><td class="fkey">Shared Preferences stores primitive data</td><td class="fval">In <span class="ans">key-value pairs</span></td></tr>
+    <tr><td class="fkey">Embed web browser = </td><td class="fval"><span class="ans">WebView</span></td></tr>
+    <tr><td class="fkey">SQLiteOpenHelper first step</td><td class="fval">Create class that inherits from <span class="ans">SQLiteOpenHelper</span></td></tr>
+    <tr><td class="fkey">AsyncTask invoked on UI thread after background</td><td class="fval"><span class="ans">onPostExecute(Result)</span></td></tr>
+    <tr><td class="fkey">JSON = data oriented</td><td class="fval">TRUE</td></tr>
+    <tr><td class="fkey">JSON array = square bracket</td><td class="fval">TRUE</td></tr>
+    <tr><td class="fkey">JSON vs XML = JSON is smaller</td><td class="fval">TRUE</td></tr>
+    <tr><td class="fkey">JSON is alternative to</td><td class="fval"><span class="ans">XML</span></td></tr>
+    <tr><td class="fkey">AsyncTask must override</td><td class="fval"><span class="ans">doInBackground(Params...)</span></td></tr>
+    <tr><td class="fkey">EditText is UI element for</td><td class="fval">Entering and <span class="ans">modifying</span> text</td></tr>
+    <tr><td class="fkey">getSharedPreferences() to use</td><td class="fval"><span class="ans">Shared Preferences</span></td></tr>
+    <tr><td class="fkey">Base class for layouts</td><td class="fval"><span class="ans">ViewGroup</span></td></tr>
+    <tr><td class="fkey">RelativeLayout = specify child relation</td><td class="fval">TRUE</td></tr>
+    <tr><td class="fkey">All Android apps composed of</td><td class="fval"><span class="ans">Functionality and Data</span></td></tr>
+    <tr><td class="fkey">READ_VOICEMAIL permission type</td><td class="fval"><span class="ans">Signature</span></td></tr>
+    <tr><td class="fkey">Implicit intent — Android finds component by</td><td class="fval">Comparing Intent contents to <strong>Intent Filters in manifest of other apps</strong></td></tr>
+    <tr><td class="fkey">Type attribute specifies</td><td class="fval"><span class="ans">explicit MIME type</span> of intent data</td></tr>
+    <tr><td class="fkey">Which methods take Intent as argument</td><td class="fval"><span class="ans">All of these</span> — sendBroadcast(), startActivity(), startService()</td></tr>
+    <tr><td class="fkey">Android 6.0 known as</td><td class="fval"><span class="ans">Marshmallow</span></td></tr>
+    <tr><td class="fkey">Foundation of Android platform</td><td class="fval"><span class="ans">Linux Kernel</span></td></tr>
+    <tr><td class="fkey">DEX file format</td><td class="fval"><span class="ans">DEX</span> — bytecode format optimized for minimal memory footprint</td></tr>
+    <tr><td class="fkey">AVD = emulator configuration</td><td class="fval"><span class="ans">AVD</span> — defines hardware and software options</td></tr>
+    <tr><td class="fkey">Required attribute for activity element</td><td class="fval"><span class="ans">android:name</span> — specifies class name of the activity</td></tr>
+    <tr><td class="fkey">Not a method of Log class</td><td class="fval"><span class="ans">Log.h()</span> — Log.d(), Log.e(), Log.i() exist but not Log.h()</td></tr>
+    <tr><td class="fkey">Service runs in background = application that</td><td class="fval">Runs <span class="ans">without any interaction with user</span></td></tr>
+    <tr><td class="fkey">Videos stored in resource directory</td><td class="fval"><span class="ans">/res/raw/</span></td></tr>
+    <tr><td class="fkey">JSON stands for</td><td class="fval"><span class="ans">JavaScript Object Notation</span></td></tr>
+    <tr><td class="fkey">JSON key always a</td><td class="fval"><span class="ans">String</span></td></tr>
+  </table>
+</div>
+
+<!-- ══ PRACTICE MCQ ══ -->
+<div class="mcq-wrap" id="practice">
+  <div class="mcq-header">
+    <h1>Practice MCQs — Week 4 to 12 + Final Quiz</h1>
+    <p>All questions from your quizzes + final exam. Tap each card to reveal answer.</p>
+  </div>
+  <div class="mcq-controls">
+    <button class="mf on" onclick="filterQ('all',this)">All</button>
+    <button class="mf" onclick="filterQ('W4',this)">W4</button>
+    <button class="mf" onclick="filterQ('W5',this)">W5</button>
+    <button class="mf" onclick="filterQ('W6',this)">W6</button>
+    <button class="mf" onclick="filterQ('W7',this)">W7</button>
+    <button class="mf" onclick="filterQ('W8',this)">W8</button>
+    <button class="mf" onclick="filterQ('W9',this)">W9</button>
+    <button class="mf" onclick="filterQ('W11',this)">W11/12</button>
+    <button class="mf" onclick="filterQ('FQ',this)">Final Quiz</button>
+    <button class="rev-btn" onclick="revealAll()">Reveal All</button>
+  </div>
+  <div class="score-line">Revealed: <span id="sc">0</span> / <span id="tot">0</span></div>
+  <div id="qlist"></div>
+</div>
+
+</main>
+</div>
+
+<script>
+function nav(el, id) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const qs = [
+  // WEEK 4
+  {q:"The purpose of a permission is to protect the ___ of an Android user.", a:"Privacy.", w:"W4"},
+  {q:"No app, by default, has permission to perform operations that adversely affect others. TRUE or FALSE?", a:"TRUE — this is a central design point of Android security architecture.", w:"W4"},
+  {q:"If your app lists normal permissions in its manifest, the system automatically grants them. TRUE or FALSE?", a:"FALSE — wait, the answer is: Normal permissions ARE automatically granted. The question was about whether system does NOT grant them automatically = FALSE (it DOES grant automatically).", w:"W4"},
+  {q:"Which of the following is a Normal Permission?", a:"ACCESS_WIFI_STATE.", w:"W4"},
+  {q:"Which of the following is a Signature Permission?", a:"MANAGE_DOCUMENTS.", w:"W4"},
+  {q:"Which of the following is a Dangerous Permission?", a:"RECORD_AUDIO and SEND_SMS — both together.", w:"W4"},
+  {q:"SET_WALLPAPER is which type of permission?", a:"Normal permission.", w:"W4"},
+  {q:"READ_VOICEMAIL is which type of permission?", a:"Signature permission.", w:"W4"},
+  {q:"Which protection levels affect third-party apps?", a:"Normal, Signature and Dangerous — all three.", w:"W4"},
+  {q:"All resources must be stored in /res in subdirectories that must be ___.", a:"Lowercase.", w:"W4"},
+  {q:"Most common resource types are stored in ___ files.", a:"XML files.", w:"W4"},
+  {q:"Browse android package resources via ___ subclasses.", a:"android.R", w:"W4"},
+  {q:"Videos are stored in which resource directory?", a:"/res/raw/", w:"W4"},
+  {q:"Which examples are resources?", a:"Bitmap, layout and animation — all three.", w:"W4"},
+  {q:"Which statement dynamically assigns image 'car' from drawable to ImageView?", a:"image.setImageResource(R.drawable.car)", w:"W4"},
+  // WEEK 5
+  {q:"You can hide or show views using ___.", a:"setVisibility(int)", w:"W5"},
+  {q:"All controls are available in ___ package.", a:"android.widget package.", w:"W5"},
+  {q:"___ controls determine how and where child controls are drawn.", a:"Layout controls.", w:"W5"},
+  {q:"UI element for entering and modifying text.", a:"EditText (not TextView).", w:"W5"},
+  {q:"___ allows user to select one option from a set.", a:"Radio Button.", w:"W5"},
+  {q:"You can configure ViewGroup or View attributes using XML layout files. TRUE or FALSE?", a:"TRUE.", w:"W5"},
+  {q:"You can't set layout attributes at runtime programmatically. TRUE or FALSE?", a:"FALSE — you CAN set layout attributes programmatically at runtime.", w:"W5"},
+  {q:"___ is designed to block out an area on screen to display a single item.", a:"FlowLayout.", w:"W5"},
+  {q:"Examples of View container controls include ___.", a:"ListView, GridView, and GalleryView — all three.", w:"W5"},
+  {q:"An ___ binds each element of the array to a single View object within the layout.", a:"ArrayAdapter.", w:"W5"},
+  {q:"Base class for widgets (interactive UI components) is ___.", a:"View.", w:"W5"},
+  {q:"Base class for layouts is ___.", a:"ViewGroup.", w:"W5"},
+  {q:"Layouts built into Android SDK include ___.", a:"FlowLayout, RelativeLayout and LinearLayout — all three.", w:"W5"},
+  {q:"A ___ view organizes child Views in a single row or column.", a:"LinearLayout.", w:"W5"},
+  {q:"A ___ view enables specifying where child controls are in relation to each other.", a:"RelativeLayout.", w:"W5"},
+  {q:"We can create layouts using ___.", a:"Either XML Resources or Programmatically — both methods.", w:"W5"},
+  {q:"A ___ is good choice when using data from a database.", a:"CursorAdapter.", w:"W5"},
+  // WEEK 6
+  {q:"Which are the data storage options given by Android?", a:"Shared Preferences, Internal Storage, External Storage and SQLite Databases — all four.", w:"W6"},
+  {q:"___ is storage not accessible by outsiders — only developer.", a:"Internal Storage.", w:"W6"},
+  {q:"SQLite does not support all relational database features. TRUE or FALSE?", a:"FALSE — SQLite DOES support all relational database features.", w:"W6"},
+  {q:"___ gives you way to save and retrieve data in key-value pair form.", a:"Shared Preferences.", w:"W6"},
+  {q:"___ View displays web pages.", a:"WebView.", w:"W6"},
+  {q:"___ is a class to provide controls for video playback.", a:"MediaController.", w:"W6"},
+  {q:"___ Method of SQLiteOpenHelper is called once when database is first created.", a:"public abstract void onCreate(SQLiteDatabase db)", w:"W6"},
+  {q:"SQLite is a ___ SQL database.", a:"Open-source and relational — both.", w:"W6"},
+  {q:"To access ___ database, you don't need to establish any connection.", a:"SQLite — no server connection needed.", w:"W6"},
+  {q:"SQLite database stores structured data in a ___ database.", a:"private database.", w:"W6"},
+  // WEEK 7
+  {q:"Web services generally exchange data messaging using ___ throughout the internet.", a:"XML.", w:"W7"},
+  {q:"Android provides support to parse the ___.", a:"JSON object and JSON array — both.", w:"W7"},
+  {q:"XML stands for ___.", a:"Extensible Markup Language.", w:"W7"},
+  {q:"JSON is extended from ___.", a:"JavaScript (not Java).", w:"W7"},
+  {q:"JSON file size is ___ as compared to XML for same data.", a:"Smaller.", w:"W7"},
+  {q:"JSON is ___.", a:"Data-oriented.", w:"W7"},
+  {q:"In JSON, ___ represents a JSON array.", a:"Square bracket [ ]", w:"W7"},
+  {q:"In JSON, ___ represents a JSON object.", a:"Curly bracket { }", w:"W7"},
+  {q:"A content provider is a component that supplies data from one app to others. TRUE or FALSE?", a:"TRUE.", w:"W7"},
+  {q:"AsyncTask should ideally be used for ___ operations.", a:"Short operations.", w:"W7"},
+  {q:"JSON stands for ___.", a:"JavaScript Object Notation.", w:"W7"},
+  {q:"A JSON object contains a key that is always a ___.", a:"String.", w:"W7"},
+  {q:"JSON is an alternative to ___.", a:"XML.", w:"W7"},
+  // WEEK 8
+  {q:"Animations in Android apps can be performed through ___.", a:"XML or android code — either method.", w:"W8"},
+  {q:"___ is the rate of change in animation.", a:"android:interpolator", w:"W8"},
+  {q:"Android framework provides APIs for drawing custom ___ graphics.", a:"2D and 3D — both.", w:"W8"},
+  {q:"Canvas class is available in ___ package.", a:"android.graphics package.", w:"W8"},
+  {q:"___ animation calculates size, rotation, start point, and endpoint.", a:"Tweened animation.", w:"W8"},
+  {q:"___ method will clear animation running on a specific view.", a:"clearAnimation()", w:"W8"},
+  {q:"Which APIs can you use to interact with Android device's GPU?", a:"Vulkan and OpenGL ES — both together.", w:"W8"},
+  {q:"Which method of MediaPlayer gets total duration of song in milliseconds?", a:"getDuration()", w:"W8"},
+  {q:"Most common resource types are stored in ___ file.", a:"XML file.", w:"W8"},
+  {q:"Which action displays phone dialer with given number?", a:"ACTION_DIAL tel:123", w:"W8"},
+  // WEEK 9
+  {q:"Instantiate ConnectivityManager by calling ___ method.", a:"getSystemService()", w:"W9"},
+  {q:"getAllNetworkInfo() returns an array of Network Info. TRUE or FALSE?", a:"TRUE.", w:"W9"},
+  {q:"NFC devices simultaneously support ___ main modes of operation.", a:"Three.", w:"W9"},
+  {q:"Check NFC availability by checking if getDefaultAdapter() is null. TRUE or FALSE?", a:"TRUE.", w:"W9"},
+  {q:"Android provides ___ package for NFC Communication.", a:"android.nfc", w:"W9"},
+  {q:"Use ___ API to get list of Wi-Fi access points visible from device.", a:"WifiManager API.", w:"W9"},
+  {q:"Request a Wi-Fi scan using ___ method of WifiManager.", a:"startScan()", w:"W9"},
+  {q:"Telephony provider contains SMS, MMS, APN data. TRUE or FALSE?", a:"TRUE.", w:"W9"},
+  {q:"Android 7.0 introduced restrictions on Wi-Fi scan frequency. TRUE or FALSE?", a:"FALSE (the accepted answer was FALSE).", w:"W9"},
+  {q:"By using MediaPlayer we can play audio or video with multiple playback options. TRUE or FALSE?", a:"TRUE.", w:"W9"},
+  // WEEK 11/12
+  {q:"ASF stands for ___.", a:"Android Sensor Framework.", w:"W11"},
+  {q:"Software-centric sensors mimic hardware-based sensors. TRUE or FALSE?", a:"TRUE.", w:"W11"},
+  {q:"Use ___ class for sensor administration instance.", a:"SensorManager.", w:"W11"},
+  {q:"Use ___ interface for two callback strategies (when sensor values or accuracy change).", a:"SensorEventListener.", w:"W11"},
+  {q:"Use ___ class to make instance of a particular sensor.", a:"Sensor.", w:"W11"},
+  {q:"Sensor raw data monitoring implemented by ___.", a:"onAccuracyChanged() and onSensorChanged() — both together.", w:"W11"},
+  {q:"Android provides ___ class for detecting common gestures.", a:"GestureDetector.", w:"W11"},
+  {q:"Convert speech to text using ___ class.", a:"SpeechRecognizer.", w:"W11"},
+  {q:"Last phase of Android app development process is ___.", a:"Publishing.", w:"W11"},
+  {q:"In Android we can generate ___ type of APK.", a:"Signed and unsigned.", w:"W11"},
+  // FINAL QUIZ
+  {q:"WAP was stripped-down version of ___.", a:"http.", w:"FQ"},
+  {q:"Android is called ___ mobile platform.", a:"Complete, open and free.", w:"FQ"},
+  {q:"AVD can be created by ___.", a:"Either Tools > AVD Manager OR Click the AVD Manager icon in the toolbar.", w:"FQ"},
+  {q:"___ provides standard interfaces exposing device hardware to Java API framework.", a:"Hardware Abstraction Layer (HAL).", w:"FQ"},
+  {q:"Entire feature-set of Android OS available through APIs in ___ language.", a:"Java.", w:"FQ"},
+  {q:"If activity has lost focus but is still visible, it is ___.", a:"Paused.", w:"FQ"},
+  {q:"___ event occurs when activity becomes visible to user.", a:"onStart()", w:"FQ"},
+  {q:"Get context by invoking ___.", a:"getApplicationContext() or getContext() or getBaseContext() — all three methods.", w:"FQ"},
+  {q:"___ file describes important information about your app.", a:"Manifest file.", w:"FQ"},
+  {q:"Launch services using Intents using ___ method(s).", a:"startService() and bindService() — both.", w:"FQ"},
+  {q:"Intent is an abstract description of ___.", a:"an operation to be performed.", w:"FQ"},
+  {q:"Primary pieces of information in Intent are ___.", a:"Action and Data.", w:"FQ"},
+  {q:"Intents are used to ___.", a:"All of these — display web page, send message between activities, start activity, send broadcast, start services.", w:"FQ"},
+  {q:"In Android 6.0, permission is requested at ___.", a:"Either Runtime or Install-Time (depends on permission type — NOT just Runtime).", w:"FQ"},
+  {q:"READ_VOICEMAIL is ___ type of permission.", a:"Signature permission.", w:"FQ"},
+  {q:"When using implicit intent, Android finds component by ___.", a:"Comparing Intent contents to intent filters declared in manifest of other apps.", w:"FQ"},
+  {q:"___ specifies explicit MIME type of intent data.", a:"Type.", w:"FQ"},
+  {q:"Which methods take intent as argument?", a:"All of these — sendBroadcast(), startActivity(), startService().", w:"FQ"},
+  {q:"Android version 6.0 is known as ___.", a:"Marshmallow.", w:"FQ"},
+  {q:"Foundation of Android platform is ___.", a:"Linux Kernel.", w:"FQ"},
+  {q:"___ file is bytecode format designed for Android, optimized for minimal memory footprint.", a:"DEX file.", w:"FQ"},
+  {q:"Only required attribute for activity element in Manifest is ___.", a:"android:name — specifies class name.", w:"FQ"},
+  {q:"Which is NOT a method of Log class?", a:"Log.h() — Log.d(), Log.e(), Log.i() exist but NOT Log.h().", w:"FQ"},
+  {q:"In Android, a ___ runs in background without any interaction with user.", a:"Service.", w:"FQ"},
+  {q:"Most apps comprise multiple ___.", a:"Activities.", w:"FQ"},
+];
+
+let revealed = 0;
+const list = document.getElementById('qlist');
+document.getElementById('tot').textContent = qs.length;
+
+qs.forEach((item, i) => {
+  const d = document.createElement('div');
+  d.className = 'mcq-card'; d.dataset.week = item.w; d.id = 'mc'+i;
+  d.innerHTML = `<div class="mcq-q"><strong>Q${i+1}.</strong> ${item.q}</div><div class="mcq-meta">${item.w}</div><div class="mcq-hint" id="h${i}">↓ tap to reveal</div><div class="mcq-ans" id="a${i}">✓ ${item.a}</div>`;
+  d.onclick = () => revOne(i);
+  list.appendChild(d);
+});
+
+function revOne(i) {
+  const a=document.getElementById('a'+i),h=document.getElementById('h'+i),c=document.getElementById('mc'+i);
+  if(a.style.display!=='block'){a.style.display='block';h.style.display='none';c.classList.add('done');revealed++;document.getElementById('sc').textContent=revealed;}
+}
+function revealAll(){qs.forEach((_,i)=>revOne(i));}
+function filterQ(w,btn){
+  document.querySelectorAll('.mf').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.mcq-card').forEach(c=>{c.classList.toggle('hidden',w!=='all'&&c.dataset.week!==w);});
+}
+</script>
+</body>
+</html>

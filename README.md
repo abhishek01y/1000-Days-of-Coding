@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [1464-maximum-product-of-two-elements-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1464-maximum-product-of-two-elements-in-an-array) |
 | [0628-maximum-product-of-three-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0628-maximum-product-of-three-numbers) |
 | [0704-binary-search](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0704-binary-search) |
+| [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
 ## Sorting
 |  |
 | ------- |
@@ -33,4 +34,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0704-binary-search](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0704-binary-search) |
+## Hash Table
+|  |
+| ------- |
+| [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
+## Sliding Window
+|  |
+| ------- |
+| [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
 <!---LeetCode Topics End-->

@@ -9,6 +9,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0704-binary-search](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0704-binary-search) |
 | [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
 | [0697-degree-of-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0697-degree-of-an-array) |
+| [1480-running-sum-of-1d-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1480-running-sum-of-1d-array) |
 ## Sorting
 |  |
 | ------- |
@@ -44,4 +45,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
+## Prefix Sum
+|  |
+| ------- |
+| [1480-running-sum-of-1d-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1480-running-sum-of-1d-array) |
 <!---LeetCode Topics End-->

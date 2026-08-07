@@ -62,4 +62,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [3345-smallest-divisible-digit-product-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3345-smallest-divisible-digit-product-i) |
+## Linked List
+|  |
+| ------- |
+| [0083-remove-duplicates-from-sorted-list](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0083-remove-duplicates-from-sorted-list) |
 <!---LeetCode Topics End-->

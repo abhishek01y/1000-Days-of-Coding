@@ -27,6 +27,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3517-smallest-palindromic-rearrangement-i) |
+| [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
 ## Counting Sort
 |  |
 | ------- |
@@ -66,4 +67,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0083-remove-duplicates-from-sorted-list](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0083-remove-duplicates-from-sorted-list) |
+## Two Pointers
+|  |
+| ------- |
+| [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
 <!---LeetCode Topics End-->

@@ -28,6 +28,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3517-smallest-palindromic-rearrangement-i) |
 | [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
+| [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 ## Counting Sort
 |  |
 | ------- |
@@ -37,6 +38,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0628-maximum-product-of-three-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0628-maximum-product-of-three-numbers) |
 | [3345-smallest-divisible-digit-product-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3345-smallest-divisible-digit-product-i) |
+| [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 ## Binary Search
 |  |
 | ------- |
@@ -71,4 +73,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
+## Simulation
+|  |
+| ------- |
+| [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 <!---LeetCode Topics End-->

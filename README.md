@@ -12,6 +12,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [1480-running-sum-of-1d-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1480-running-sum-of-1d-array) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [3731-find-missing-elements](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3731-find-missing-elements) |
+| [0026-remove-duplicates-from-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0026-remove-duplicates-from-sorted-array) |
 ## Sorting
 |  |
 | ------- |
@@ -73,6 +74,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
+| [0026-remove-duplicates-from-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0026-remove-duplicates-from-sorted-array) |
 ## Bit Manipulation
 |  |
 | ------- |

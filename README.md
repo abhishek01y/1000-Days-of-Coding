@@ -34,6 +34,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3517-smallest-palindromic-rearrangement-i) |
 | [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
+| [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 ## Counting Sort
 |  |
 | ------- |
@@ -66,6 +67,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 ## Enumeration
 |  |
 | ------- |
@@ -81,6 +83,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0026-remove-duplicates-from-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0026-remove-duplicates-from-sorted-array) |
 | [0977-squares-of-a-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0977-squares-of-a-sorted-array) |
 | [0016-3sum-closest](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0016-3sum-closest) |
+| [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 ## Bit Manipulation
 |  |
 | ------- |

@@ -19,6 +19,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0033-search-in-rotated-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0033-search-in-rotated-sorted-array) |
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
+| [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Sorting
 |  |
 | ------- |
@@ -29,6 +30,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0977-squares-of-a-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0977-squares-of-a-sorted-array) |
 | [0016-3sum-closest](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0016-3sum-closest) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
+| [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
@@ -59,6 +61,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0153-find-minimum-in-rotated-sorted-array) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0033-search-in-rotated-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0033-search-in-rotated-sorted-array) |
+| [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Hash Table
 |  |
 | ------- |
@@ -66,6 +69,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0697-degree-of-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0697-degree-of-an-array) |
 | [3731-find-missing-elements](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3731-find-missing-elements) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
+| [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Sliding Window
 |  |
 | ------- |
@@ -97,6 +101,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
 | [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
+| [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 ## Bit Manipulation
 |  |
 | ------- |

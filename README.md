@@ -40,6 +40,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0125-valid-palindrome](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0125-valid-palindrome) |
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 | [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
+| [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
 ## Counting Sort
 |  |
 | ------- |
@@ -95,6 +96,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0016-3sum-closest](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0016-3sum-closest) |
 | [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
+| [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
 ## Bit Manipulation
 |  |
 | ------- |

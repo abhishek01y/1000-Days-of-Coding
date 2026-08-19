@@ -20,6 +20,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0033-search-in-rotated-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0033-search-in-rotated-sorted-array) |
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
 ## Sorting
 |  |
 | ------- |
@@ -31,6 +32,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0016-3sum-closest](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0016-3sum-closest) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
@@ -102,6 +104,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
 | [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
 ## Bit Manipulation
 |  |
 | ------- |

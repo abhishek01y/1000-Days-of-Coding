@@ -21,6 +21,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0011-container-with-most-water](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0011-container-with-most-water) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
+| [3069-distribute-elements-into-two-arrays-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3069-distribute-elements-into-two-arrays-i) |
 ## Sorting
 |  |
 | ------- |
@@ -114,6 +115,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
+| [3069-distribute-elements-into-two-arrays-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3069-distribute-elements-into-two-arrays-i) |
 ## Greedy
 |  |
 | ------- |

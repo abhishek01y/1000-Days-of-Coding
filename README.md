@@ -57,6 +57,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3345-smallest-divisible-digit-product-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3345-smallest-divisible-digit-product-i) |
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
+| [3622-check-divisibility-by-digit-sum-and-product](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3622-check-divisibility-by-digit-sum-and-product) |
 ## Binary Search
 |  |
 | ------- |

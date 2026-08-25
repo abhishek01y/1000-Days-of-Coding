@@ -22,6 +22,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
 | [3069-distribute-elements-into-two-arrays-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3069-distribute-elements-into-two-arrays-i) |
+| [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 ## Sorting
 |  |
 | ------- |
@@ -74,6 +75,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3731-find-missing-elements](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3731-find-missing-elements) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
+| [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 ## Sliding Window
 |  |
 | ------- |

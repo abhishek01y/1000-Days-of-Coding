@@ -24,6 +24,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3069-distribute-elements-into-two-arrays-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3069-distribute-elements-into-two-arrays-i) |
 | [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 | [3471-find-the-largest-almost-missing-integer](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3471-find-the-largest-almost-missing-integer) |
+| [0081-search-in-rotated-sorted-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0081-search-in-rotated-sorted-array-ii) |
 ## Sorting
 |  |
 | ------- |
@@ -68,6 +69,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0033-search-in-rotated-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0033-search-in-rotated-sorted-array) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
+| [0081-search-in-rotated-sorted-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0081-search-in-rotated-sorted-array-ii) |
 ## Hash Table
 |  |
 | ------- |

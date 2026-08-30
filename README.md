@@ -25,6 +25,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 | [3471-find-the-largest-almost-missing-integer](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3471-find-the-largest-almost-missing-integer) |
 | [0081-search-in-rotated-sorted-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0081-search-in-rotated-sorted-array-ii) |
+| [3740-minimum-distance-between-three-equal-elements-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3740-minimum-distance-between-three-equal-elements-i) |
 ## Sorting
 |  |
 | ------- |
@@ -80,6 +81,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 | [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 | [3471-find-the-largest-almost-missing-integer](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3471-find-the-largest-almost-missing-integer) |
+| [3740-minimum-distance-between-three-equal-elements-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3740-minimum-distance-between-three-equal-elements-i) |
 ## Sliding Window
 |  |
 | ------- |

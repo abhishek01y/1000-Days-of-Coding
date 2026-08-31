@@ -26,6 +26,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3471-find-the-largest-almost-missing-integer](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3471-find-the-largest-almost-missing-integer) |
 | [0081-search-in-rotated-sorted-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0081-search-in-rotated-sorted-array-ii) |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3740-minimum-distance-between-three-equal-elements-i) |
+| [1470-shuffle-the-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1470-shuffle-the-array) |
 ## Sorting
 |  |
 | ------- |

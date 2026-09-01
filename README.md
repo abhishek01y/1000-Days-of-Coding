@@ -27,6 +27,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0081-search-in-rotated-sorted-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0081-search-in-rotated-sorted-array-ii) |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3740-minimum-distance-between-three-equal-elements-i) |
 | [1470-shuffle-the-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1470-shuffle-the-array) |
+| [3895-count-digit-appearances](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3895-count-digit-appearances) |
 ## Sorting
 |  |
 | ------- |
@@ -63,6 +64,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [3622-check-divisibility-by-digit-sum-and-product](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3622-check-divisibility-by-digit-sum-and-product) |
+| [3895-count-digit-appearances](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3895-count-digit-appearances) |
 ## Binary Search
 |  |
 | ------- |

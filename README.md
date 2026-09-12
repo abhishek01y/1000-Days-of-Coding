@@ -45,6 +45,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
 | [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
+| [0242-valid-anagram](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0242-valid-anagram) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
@@ -59,6 +60,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0067-add-binary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0067-add-binary) |
 | [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 | [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
+| [0242-valid-anagram](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0242-valid-anagram) |
 ## Counting Sort
 |  |
 | ------- |
@@ -94,6 +96,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3718-smallest-missing-multiple-of-k](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3718-smallest-missing-multiple-of-k) |
 | [3471-find-the-largest-almost-missing-integer](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3471-find-the-largest-almost-missing-integer) |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3740-minimum-distance-between-three-equal-elements-i) |
+| [0242-valid-anagram](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0242-valid-anagram) |
 ## Sliding Window
 |  |
 | ------- |

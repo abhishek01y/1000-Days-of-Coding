@@ -31,6 +31,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3875-construct-uniform-parity-array-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3875-construct-uniform-parity-array-i) |
 | [3876-construct-uniform-parity-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3876-construct-uniform-parity-array-ii) |
 | [3903-smallest-stable-index-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3903-smallest-stable-index-i) |
+| [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
 ## Sorting
 |  |
 | ------- |
@@ -43,10 +44,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0268-missing-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0268-missing-number) |
 | [0350-intersection-of-two-arrays-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0350-intersection-of-two-arrays-ii) |
 | [0088-merge-sorted-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0088-merge-sorted-array) |
+| [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
 ## Heap (Priority Queue)
 |  |
 | ------- |
 | [1464-maximum-product-of-two-elements-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1464-maximum-product-of-two-elements-in-an-array) |
+| [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
 ## String
 |  |
 | ------- |
@@ -148,4 +151,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0196-delete-duplicate-emails](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0196-delete-duplicate-emails) |
 | [0182-duplicate-emails](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0182-duplicate-emails) |
 | [0184-department-highest-salary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0184-department-highest-salary) |
+## Divide and Conquer
+|  |
+| ------- |
+| [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
+## Quickselect
+|  |
+| ------- |
+| [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
 <!---LeetCode Topics End-->

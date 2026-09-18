@@ -159,6 +159,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0183-customers-who-never-order](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0183-customers-who-never-order) |
 | [0586-customer-placing-the-largest-number-of-orders](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0586-customer-placing-the-largest-number-of-orders) |
 | [0607-sales-person](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0607-sales-person) |
+| [0178-rank-scores](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0178-rank-scores) |
 ## Divide and Conquer
 |  |
 | ------- |

@@ -164,6 +164,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0177-nth-highest-salary](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0177-nth-highest-salary) |
 | [0180-consecutive-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0180-consecutive-numbers) |
 | [0596-classes-with-at-least-5-students](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0596-classes-with-at-least-5-students) |
+| [0619-biggest-single-number](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0619-biggest-single-number) |
 ## Divide and Conquer
 |  |
 | ------- |

@@ -61,6 +61,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0392-is-subsequence](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0392-is-subsequence) |
 | [0344-reverse-string](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0344-reverse-string) |
 | [0242-valid-anagram](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0242-valid-anagram) |
+| [1614-maximum-nesting-depth-of-the-parentheses](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1614-maximum-nesting-depth-of-the-parentheses) |
 ## Counting Sort
 |  |
 | ------- |
@@ -193,4 +194,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0703-kth-largest-element-in-a-stream](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0703-kth-largest-element-in-a-stream) |
+## Stack
+|  |
+| ------- |
+| [1614-maximum-nesting-depth-of-the-parentheses](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1614-maximum-nesting-depth-of-the-parentheses) |
+## Bracket Sequences
+|  |
+| ------- |
+| [1614-maximum-nesting-depth-of-the-parentheses](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1614-maximum-nesting-depth-of-the-parentheses) |
 <!---LeetCode Topics End-->

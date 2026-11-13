@@ -180,6 +180,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0703-kth-largest-element-in-a-stream](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0703-kth-largest-element-in-a-stream) |
+| [0100-same-tree](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0100-same-tree) |
 ## Design
 |  |
 | ------- |
@@ -192,6 +193,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0703-kth-largest-element-in-a-stream](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0703-kth-largest-element-in-a-stream) |
+| [0100-same-tree](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0100-same-tree) |
 ## Data Stream
 |  |
 | ------- |
@@ -204,4 +206,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [1614-maximum-nesting-depth-of-the-parentheses](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1614-maximum-nesting-depth-of-the-parentheses) |
+## Depth-First Search
+|  |
+| ------- |
+| [0100-same-tree](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0100-same-tree) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0100-same-tree](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0100-same-tree) |
 <!---LeetCode Topics End-->

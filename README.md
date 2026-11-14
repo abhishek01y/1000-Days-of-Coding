@@ -33,6 +33,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3903-smallest-stable-index-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3903-smallest-stable-index-i) |
 | [0215-kth-largest-element-in-an-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0215-kth-largest-element-in-an-array) |
 | [3105-longest-strictly-increasing-or-strictly-decreasing-subarray](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3105-longest-strictly-increasing-or-strictly-decreasing-subarray) |
+| [3364-minimum-positive-sum-subarray](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3364-minimum-positive-sum-subarray) |
 ## Sorting
 |  |
 | ------- |
@@ -103,11 +104,13 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0219-contains-duplicate-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0219-contains-duplicate-ii) |
+| [3364-minimum-positive-sum-subarray](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3364-minimum-positive-sum-subarray) |
 ## Prefix Sum
 |  |
 | ------- |
 | [1480-running-sum-of-1d-array](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/1480-running-sum-of-1d-array) |
 | [3903-smallest-stable-index-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3903-smallest-stable-index-i) |
+| [3364-minimum-positive-sum-subarray](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3364-minimum-positive-sum-subarray) |
 ## Dynamic Programming
 |  |
 | ------- |

@@ -80,6 +80,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [3895-count-digit-appearances](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3895-count-digit-appearances) |
 | [3875-construct-uniform-parity-array-i](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3875-construct-uniform-parity-array-i) |
 | [3876-construct-uniform-parity-array-ii](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/3876-construct-uniform-parity-array-ii) |
+| [0002-add-two-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0002-add-two-numbers) |
 ## Binary Search
 |  |
 | ------- |
@@ -127,6 +128,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0083-remove-duplicates-from-sorted-list](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0083-remove-duplicates-from-sorted-list) |
 | [0876-middle-of-the-linked-list](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0876-middle-of-the-linked-list) |
+| [0002-add-two-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0002-add-two-numbers) |
 ## Two Pointers
 |  |
 | ------- |
@@ -219,4 +221,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0100-same-tree](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0100-same-tree) |
+## Recursion
+|  |
+| ------- |
+| [0002-add-two-numbers](https://github.com/abhishek01y/1000-Days-of-Coding/tree/master/0002-add-two-numbers) |
 <!---LeetCode Topics End-->
